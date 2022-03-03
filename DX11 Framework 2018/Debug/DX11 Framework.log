@@ -1,0 +1,73 @@
+﻿  Application.cpp
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\CubeObject.h(8,34): warning C4100: 'graphics': unreferenced formal parameter
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\Application.cpp(502,14): warning C4129: '=': unrecognized character escape sequence
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\Application.cpp(511,14): warning C4129: '=': unrecognized character escape sequence
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\Application.cpp(517,14): warning C4129: '=': unrecognized character escape sequence
+  ApplicationGraphics.cpp
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\ApplicationGraphics.cpp(128,9): warning C4551: function call missing argument list
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\ApplicationGraphics.cpp(133,9): warning C4551: function call missing argument list
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\ApplicationGraphics.cpp(202): warning C4238: nonstandard extension used: class rvalue used as lvalue
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\ApplicationGraphics.cpp(203): warning C4238: nonstandard extension used: class rvalue used as lvalue
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\ApplicationGraphics.cpp(202,62): warning C4238: nonstandard extension used: class rvalue used as lvalue
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\ApplicationGraphics.cpp(203,74): warning C4238: nonstandard extension used: class rvalue used as lvalue
+  AudioEngine.cpp
+  Camera.cpp
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\Camera.cpp(80,14): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  DDSTextureLoader.cpp
+  DX11 Framework.cpp
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\CubeObject.h(8,34): warning C4100: 'graphics': unreferenced formal parameter
+  GroundPlane.cpp
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\GroundPlane.cpp(58,27): warning C4244: '=': conversion from 'UINT' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=unsigned short
+          ]
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\GroundPlane.cpp(59,35): warning C4244: '=': conversion from 'UINT' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=unsigned short
+          ]
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\GroundPlane.cpp(60,37): warning C4244: '=': conversion from 'UINT' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=unsigned short
+          ]
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\GroundPlane.cpp(62,37): warning C4244: '=': conversion from 'UINT' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=unsigned short
+          ]
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\GroundPlane.cpp(63,35): warning C4244: '=': conversion from 'UINT' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=unsigned short
+          ]
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\GroundPlane.cpp(64,41): warning C4244: '=': conversion from 'UINT' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=unsigned short
+          ]
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\GroundPlane.cpp(15,8): warning C4189: 'du': local variable is initialized but not referenced
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\GroundPlane.cpp(16,8): warning C4189: 'dv': local variable is initialized but not referenced
+  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_impl_dx11.cpp
+  imgui_impl_win32.cpp
+  imgui_tables.cpp
+  imgui_widgets.cpp
+  OBJLoader.cpp
+  SceneObject.cpp
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\SceneObject.cpp(128,20): warning C4018: '<': signed/unsigned mismatch
+  SetUpGUI.cpp
+  Time.cpp
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\Time.cpp(38,14): warning C4244: '=': conversion from 'double' to '__int64', possible loss of data
+  Generating Code...
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\ApplicationGraphics.cpp(293): warning C4715: 'ApplicationGraphics::UpdateWireFrame': not all control paths return a value
+Application.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+AudioEngine.obj : error LNK2019: unresolved external symbol _FMOD_System_Create@8 referenced in function "enum FMOD_RESULT __cdecl FMOD::System_Create(class FMOD::System * *,unsigned int)" (?System_Create@FMOD@@YA?AW4FMOD_RESULT@@PAPAVSystem@1@I@Z)
+AudioEngine.obj : error LNK2019: unresolved external symbol "public: enum FMOD_RESULT __stdcall FMOD::System::init(int,unsigned int,void *)" (?init@System@FMOD@@QAG?AW4FMOD_RESULT@@HIPAX@Z) referenced in function "public: __thiscall AudioEngine::AudioEngine(void)" (??0AudioEngine@@QAE@XZ)
+AudioEngine.obj : error LNK2019: unresolved external symbol "public: enum FMOD_RESULT __stdcall FMOD::System::getMasterChannelGroup(class FMOD::ChannelGroup * *)" (?getMasterChannelGroup@System@FMOD@@QAG?AW4FMOD_RESULT@@PAPAVChannelGroup@2@@Z) referenced in function "public: __thiscall AudioEngine::AudioEngine(void)" (??0AudioEngine@@QAE@XZ)
+AudioEngine.obj : error LNK2019: unresolved external symbol "public: void __thiscall AudioEngine::ErrorCheck(enum FMOD_RESULT)" (?ErrorCheck@AudioEngine@@QAEXW4FMOD_RESULT@@@Z) referenced in function "public: __thiscall AudioEngine::AudioEngine(void)" (??0AudioEngine@@QAE@XZ)
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\Dependancies\Fmod\lib\fmod_vc.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\Debug\DX11 Framework.exe : fatal error LNK1120: 4 unresolved externals

@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns:atg="http://atg.xbox.com" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{8e114980-c1a3-4ada-ad7c-83caadf5daeb}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{2c3d4c8c-5d1a-459a-a05a-a4e4b608a44e}</UniqueIdentifier>
+      <Extensions>fx;fxh;hlsl</Extensions>
+    </Filter>
+    <Filter Include="Imgui">
+      <UniqueIdentifier>{52ca0492-004b-4d11-ad30-2b1506b1f6fc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Imgui\imconfig.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\imgui.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\imgui_impl_dx11.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\imgui_internal.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\imstb_rectpack.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\imstb_textedit.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\imstb_truetype.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\imgui_impl_win32.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h" />
+    <ClInclude Include="ApplicationGraphics.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="DDSTextureLoader.h" />
+    <ClInclude Include="GroundPlane.h" />
+    <ClInclude Include="LightStructs.h" />
+    <ClInclude Include="OBJLoader.h" />
+    <ClInclude Include="SceneObject.h" />
+    <ClInclude Include="SetUpGUI.h" />
+    <ClInclude Include="Structures.h" />
+    <ClInclude Include="Time.h" />
+    <ClInclude Include="AudioEngine.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Imgui\imgui.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Imgui\imgui_demo.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Imgui\imgui_draw.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Imgui\imgui_impl_dx11.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Imgui\imgui_tables.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Imgui\imgui_widgets.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Imgui\imgui_impl_win32.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp" />
+    <ClCompile Include="ApplicationGraphics.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="DDSTextureLoader.cpp" />
+    <ClCompile Include="DX11 Framework.cpp" />
+    <ClCompile Include="GroundPlane.cpp" />
+    <ClCompile Include="OBJLoader.cpp" />
+    <ClCompile Include="SceneObject.cpp" />
+    <ClCompile Include="SetUpGUI.cpp" />
+    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="AudioEngine.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CLInclude Include="resource.h">
+      <Filter>Resource Files</Filter>
+    </CLInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SkyBoxShader.fx">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="LightShading.fx">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="DX11 Framework.fx">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DX11 Framework.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
