@@ -383,7 +383,8 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="ApplicationGraphics.cpp" />
-    <ClCompile Include="AudioEngine.cpp" />
+    <ClCompile Include="BreaksCore.cpp" />
+    <ClCompile Include="Breaksengine.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DDSTextureLoader.cpp" />
     <ClCompile Include="DX11 Framework.cpp" />
@@ -406,7 +407,7 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="ApplicationGraphics.h" />
-    <ClInclude Include="AudioEngine.h" />
+    <ClInclude Include="BreaksEngine.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="DDSTextureLoader.h" />
     <ClInclude Include="GroundPlane.h" />

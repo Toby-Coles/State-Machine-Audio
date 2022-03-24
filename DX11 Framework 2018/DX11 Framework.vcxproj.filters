@@ -49,7 +49,7 @@
     <ClInclude Include="SetUpGUI.h" />
     <ClInclude Include="Structures.h" />
     <ClInclude Include="Time.h" />
-    <ClInclude Include="AudioEngine.h" />
+    <ClInclude Include="BreaksEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Imgui\imgui.cpp">
@@ -83,7 +83,8 @@
     <ClCompile Include="SceneObject.cpp" />
     <ClCompile Include="SetUpGUI.cpp" />
     <ClCompile Include="Time.cpp" />
-    <ClCompile Include="AudioEngine.cpp" />
+    <ClCompile Include="Breaksengine.cpp" />
+    <ClCompile Include="BreaksCore.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
