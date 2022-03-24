@@ -3,6 +3,7 @@
 #include "fmod.h"
 #include <fmod.hpp>
 #include <vector>
+#include <iostream>
 
 struct SoundStruct {
 	const char* filePath;
@@ -21,7 +22,7 @@ public:
 
 	// === Core System Functions === // 
 	void Update(float elapsed);
-	void ErrorCheck(FMOD_RESULT);
+	void ErrorCheck(FMOD_RESULT result);
 	void ShutDown();
 	float RandomBetween();
 
@@ -29,6 +30,7 @@ public:
 	SoundStruct LoadSound(const char* name, const char* path);
 	FMOD::Sound* CreateStream(const char* path);
 
+	void PlaySound(SoundStruct sound, float volume /*position*/);
 
 private:
 
@@ -37,6 +39,9 @@ private:
 	// === Channels === //
 	FMOD::Channel* _playingSongChannel;
 	FMOD::ChannelGroup* _master;
+	FMOD::ChannelGroup* _SFX;
+	FMOD::ChannelControl* _soundTrack;
+
 	std::vector<FMOD::Channel*> _channels;
 	
 };

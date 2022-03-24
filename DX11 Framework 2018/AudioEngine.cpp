@@ -23,6 +23,30 @@ AudioEngine::AudioEngine()
 	//_currentSongChannel = nullptr;
 }
 
-void AudioEngine::ErrorCheck(FMOD_RESULT)
+
+// ============ Core Engine Functions ============ // 
+
+//Play a sound based off the SoundStruct object passed in
+void AudioEngine::PlaySound(SoundStruct sound, float volume)
 {
+	FMOD::Channel* channel;
+	FMOD_RESULT result = _system->playSound(sound.sound, _SFX, false, &channel);
+	ErrorCheck(result);
+	channel->setChannelGroup(_SFX);
+	channel->setVolume(volume);
+	channel->setPaused(false);
+	_channels.push_back(channel);
+
 }
+
+//Each Fmod function returns an FMOD_RESULT, defining the error type it encountered if it did enocunter one 
+void AudioEngine::ErrorCheck(FMOD_RESULT result)
+{
+	if (result != FMOD_OK)
+	{
+		std::cout << "Audio Error: : ";
+		std::cout << result << std::endl;
+	}
+}
+
+
