@@ -1,33 +1,35 @@
 #pragma once
 
+#include "BreaksCore.cpp"
 #include "fmod.h"
 #include <fmod.hpp>
 #include <vector>
+#include <map>
 #include <iostream>
+#include "Vector3.cpp"
 
-// ========================== Breaks Engine ========================== //
-//BreaksEngine houses the remaining logic and primary interaction point
-//with the engine, wrapping BreakCores functionality to be used 
+// ================================ Breaks Engine ================================== //
+//The Breaks Engine is a state machine oriented audio engine for application
+//in games, 3D or 2D. Consisting of BreaksCore, housing the state machine 
+//architecture and core functionality, and the Breaks Engine where all of this 
+//is wrapped and applied. The engine is designed to be expandable and maintainable,
+//with its state machine design meaning new features in the form of states can be
+//added at the developers desire. 
+// ================================================================================ //
 
-//struct SoundStruct {
-//	const char* filePath;
-//	FMOD::Sound* sound;
-//	const char* name;
-//	//State machine state
-//};
 
 class BreaksEngine
 {
 public:
 	BreaksEngine();
-	~BreaksEngine() {
-
-	}
+	~BreaksEngine() {}
 
 	// === Core System Functions === // 
-	void Init();
+	void Initialize();
 	void Update(float elapsed);
 	void ErrorCheck(FMOD_RESULT result);
+	void SetEarPos(Vector3 pos, bool isRelative);
+	
 	void ShutDown();
 	float RandomBetween();
 
@@ -48,29 +50,17 @@ public:
 	FMOD::Sound* CreateStream(const char* path);
 
 	//void PlaySound(int SoundStruct sound, float volume /*position*/);
-	int PlaySound(int soundID, Vec3 pos, float volume);
+	int RegisterSound(BreaksEngine::SoundData& soundData, bool load);
+	int PlaySound(int soundID, Vector3 pos, float volume);
 	void LoadSound(int soundID);
 	void UnloadSound(int soundID);
 	void StopSound(int soundID);
+
 	bool CheckLoaded(int soundID);
 	void SetBreaksChannelVolume(int channelID, float volume);
-	void SetBreaksChannelPosition(int channelID, Vec3 pos, bool isRelative);
-	void StopBreaksChannel();
-	void VirtualiseBreaksChannel();
-	void DeVirtualiseBreaksChannel();
-
-
-private:
-
-	//FMOD::System* _system;
-
-	//// === Channels === //
-	//FMOD::Channel* _playingSongChannel;
-	//FMOD::ChannelGroup* _master;
-	//FMOD::ChannelGroup* _SFX;
-	//FMOD::ChannelControl* _soundTrack;
-
-	//std::vector<FMOD::Channel*> _channels;
-	
+	void SetBreaksChannelPosition(int channelID, Vector3 pos, bool isRelative);
+	void StopBreaksChannel(int channelID);
+	void VirtualiseBreaksChannel(int channelID);
+	void DeVirtualiseBreaksChannel(int channelID);
 };
 

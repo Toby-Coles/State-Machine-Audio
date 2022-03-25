@@ -85,6 +85,7 @@
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Breaksengine.cpp" />
     <ClCompile Include="BreaksCore.cpp" />
+    <ClCompile Include="Vector3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">

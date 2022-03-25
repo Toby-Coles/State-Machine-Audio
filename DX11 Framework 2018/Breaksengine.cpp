@@ -1,52 +1,126 @@
 #include "BreaksEngine.h"
 
-AudioEngine::AudioEngine()
+BreaksCore* core = nullptr;
+
+
+// ====== Initialise the BreaksCore Framework ====== //
+void BreaksEngine::Initialize()
 {
-	//Create and initiliaze the fmod core system
-	FMOD::System_Create(&_system);
-	
-	FMOD_RESULT result;
-	result = _system->init(50, FMOD_INIT_NORMAL, 0);
-	ErrorCheck(result);
-
-	//Create channels for each audio type
-	_system->getMasterChannelGroup(&_master);
-	//for (int i = 0; i < Type_Count; i++)
-	//{
-	//	_fmodSystem->createChannelGroup(0, &_groups[i]);
-	//	_master->addGroup(_groups[i]);
-	//}
-	////Set up modes for each type
-	//modes[Type_SFX] = FMOD_DEFAULT;
-	//modes[Type_Song] = FMOD_DEFAULT | FMOD_CREATESTREAM | FMOD_LOOP_NORMAL;
-
-	//_currentSongChannel = nullptr;
+	core = new BreaksCore;
 }
 
-
-// ============ Core Engine Functions ============ // 
-
-//Play a sound based off the SoundStruct object passed in
-void AudioEngine::PlaySound(SoundStruct sound, float volume)
+void BreaksEngine::Update(float elapsed)
 {
-	FMOD::Channel* channel;
-	FMOD_RESULT result = _system->playSound(sound.sound, _SFX, false, &channel);
-	ErrorCheck(result);
-	channel->setChannelGroup(_SFX);
-	channel->setVolume(volume);
-	channel->setPaused(false);
-	_channels.push_back(channel);
-
+	core->Update(elapsed);
 }
 
-//Each Fmod function returns an FMOD_RESULT, defining the error type it encountered if it did enocunter one 
-void AudioEngine::ErrorCheck(FMOD_RESULT result)
+void BreaksEngine::SetEarPos(Vector3 pos, bool isRelative)
 {
-	if (result != FMOD_OK)
+	core->SetEarPos(pos, isRelative);
+}
+
+// ====== Shut down the Engine ====== //
+void BreaksEngine::ShutDown()
+{
+	delete core;
+}
+
+//Registers a sound to a unique ID, giving the option to load it directly after
+int BreaksEngine::RegisterSound(BreaksEngine::SoundData &soundData, bool load)
+{
+	int soundID = core->nextSoundID;
+	core->nextSoundID++;
+	core->soundDataMap[soundID] = &soundData;
+
+	if (load) {
+		core->LoadSound(soundID);
+	}
+	return soundID;
+}
+
+int BreaksEngine::PlaySound(int soundID, Vector3 pos, float volume)
+{
+	int breaksChannelID = core->nextBreakChannelID;
+	core->nextBreakChannelID++;
+	auto found = core->sounds.find(soundID);
+
+	//If the audio is not loaded, fail the function
+	if (found == core->sounds.end())
 	{
-		std::cout << "Audio Error: : ";
-		std::cout << result << std::endl;
+		return breaksChannelID;
+	}
+	core->channelMap[breaksChannelID] = std::make_unique<BreaksCore::BreaksChannel>(*core, soundID, core->soundDataMap[soundID], BreaksCore::VirtualSetting::MUTE, pos, volume);
+	return breaksChannelID;
+}
+
+void BreaksEngine::LoadSound(int soundID)
+{
+	core->LoadSound(soundID);
+}
+
+void BreaksEngine::UnloadSound(int soundID)
+{
+	//If the sound is loaded, unload it. If it isnt then do nothing
+	auto exists = core->sounds.find(soundID);
+	if (exists != core->sounds.end()) {
+		//Unload the sound
+		exists->second->release();
+		core->sounds.erase(exists);
 	}
 }
 
 
+bool BreaksEngine::CheckLoaded(int soundID)
+{
+	return core->CheckLoaded(soundID);
+}
+
+void BreaksEngine::SetBreaksChannelVolume(int channelID, float volume)
+{
+	auto exists = core->channelMap.find(channelID);
+	if (exists != core->channelMap.end()) {
+		exists->second->volume = volume;
+		exists->second->channel->setVolume(volume);
+	}
+}
+
+void BreaksEngine::SetBreaksChannelPosition(int channelID, Vector3 pos, bool isRelative)
+{
+	auto exists = core->channelMap.find(channelID);
+	if (exists != core->channelMap.end())
+	{
+		auto &channel = exists->second;
+		channel->SetUpdateFlag(BreaksCore::BreaksChannel::UpdateFlag::POSITION, true);
+		if (isRelative) {
+			Vector3 newPos = { channel->position.x + pos.x,
+							   channel->position.y + pos.y,
+							   channel->position.z + pos.z };
+			channel->position = newPos;
+		}
+		channel->position = pos;
+	}
+}
+
+void BreaksEngine::StopBreaksChannel(int channelID)
+{
+	auto exists = core->channelMap.find(channelID);
+	if (exists != core->channelMap.end()) {
+		exists->second->stopRequested = true;
+	}
+}
+
+void BreaksEngine::VirtualiseBreaksChannel(int channelID)
+{
+	auto exists = core->channelMap.find(channelID);
+	if (exists != core->channelMap.end()); {
+		exists->second->virtualFlag = true;
+	}
+}
+
+void BreaksEngine::DeVirtualiseBreaksChannel(int channelID)
+{
+	auto exists = core->channelMap.find(channelID);
+	if (exists != core->channelMap.end()); {
+		exists->second->virtualFlag = true;
+	}
+}
