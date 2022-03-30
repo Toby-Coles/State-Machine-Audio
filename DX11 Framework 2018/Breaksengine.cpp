@@ -1,3 +1,5 @@
+#pragma once
+
 #include "BreaksEngine.h"
 
 BreaksCore* core = nullptr;
