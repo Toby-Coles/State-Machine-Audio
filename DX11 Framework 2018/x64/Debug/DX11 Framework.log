@@ -1,1 +1,309 @@
-﻿
+﻿  Application.cpp
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\CubeObject.h(8,34): warning C4100: 'graphics': unreferenced formal parameter
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\Application.cpp(502,14): warning C4129: '=': unrecognized character escape sequence
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\Application.cpp(511,14): warning C4129: '=': unrecognized character escape sequence
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\Application.cpp(517,14): warning C4129: '=': unrecognized character escape sequence
+  ApplicationGraphics.cpp
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\ApplicationGraphics.cpp(128,9): warning C4551: function call missing argument list
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\ApplicationGraphics.cpp(133,9): warning C4551: function call missing argument list
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\ApplicationGraphics.cpp(202): warning C4238: nonstandard extension used: class rvalue used as lvalue
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\ApplicationGraphics.cpp(203): warning C4238: nonstandard extension used: class rvalue used as lvalue
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\ApplicationGraphics.cpp(202,62): warning C4238: nonstandard extension used: class rvalue used as lvalue
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\ApplicationGraphics.cpp(203,74): warning C4238: nonstandard extension used: class rvalue used as lvalue
+  BreaksCore.cpp
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(22,14): error C2653: 'FMOD': is not a class or namespace name
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(22,14): error C2143: syntax error: missing ';' before '*'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(22,14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(22,22): error C2238: unexpected token(s) preceding ';'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(32,145): error C2653: 'BreaksEngine': is not a class or namespace name
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(32,145): error C2061: syntax error: identifier 'SoundData'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(50,16): error C2653: 'FMOD': is not a class or namespace name
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(50,16): error C2143: syntax error: missing ';' before '*'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(50,16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(50,35): error C2238: unexpected token(s) preceding ';'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(51,26): error C2653: 'BreaksEngine': is not a class or namespace name
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(51,26): error C2143: syntax error: missing ';' before '*'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(51,26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(51,37): error C2238: unexpected token(s) preceding ';'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(89,35): error C2653: 'FMOD': is not a class or namespace name
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(89,30): error C2065: 'Sound': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(89,36): error C2059: syntax error: '>'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(89): error C2062: type 'unknown-type' unexpected
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(89,46): error C2238: unexpected token(s) preceding ';'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(90,47): error C2653: 'BreaksEngine': is not a class or namespace name
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(90,38): error C2065: 'SoundData': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(90,48): error C2059: syntax error: '>'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(90): error C2062: type 'unknown-type' unexpected
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(90,62): error C2238: unexpected token(s) preceding ';'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(93,17): error C3646: 'sounds': unknown override specifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(93,17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(94,27): error C3646: 'soundDataMap': unknown override specifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(94,27): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(102,9): error C2659: '=': function as left operand
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(103,21): error C2653: 'FMOD': is not a class or namespace name
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(103,8): error C3861: 'System_Create': identifier not found
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(104,24): error C2653: 'FMOD': is not a class or namespace name
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(104,25): error C2065: 'FMOD_DEBUG_LEVEL_LOG': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(104,8): error C3861: 'Debug_Initialize': identifier not found
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(105,20): error C2065: 'FMOD_INIT_NORMAL': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(106,2): error C2065: 'FMOD_VECTOR': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(106,14): error C2146: syntax error: missing ';' before identifier 'listenerPos'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(106,14): error C2065: 'listenerPos': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(107,2): error C2065: 'FMOD_VECTOR': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(107,14): error C2146: syntax error: missing ';' before identifier 'listenerVel'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(107,14): error C2065: 'listenerVel': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(108,38): error C2065: 'listenerPos': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(108,52): error C2065: 'listenerVel': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,24): error C2065: 'sounds': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,24): error C2672: 'begin': no matching overloaded function found
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,32): error C2893: Failed to specialize function template 'unknown-type std::begin(_Container &)'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.25.28610\include\xutility(1911): message : see declaration of 'std::begin'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,32): message : With the following template arguments:
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,32): message : '_Container=unknown-type'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,32): error C2784: 'const _Elem *std::begin(std::initializer_list<_Elem>) noexcept': could not deduce template argument for 'std::initializer_list<_Elem>' from 'unknown-type'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.25.28610\include\initializer_list(57): message : see declaration of 'std::begin'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,24): error C2672: 'end': no matching overloaded function found
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,32): error C2893: Failed to specialize function template 'unknown-type std::end(_Container &)'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.25.28610\include\xutility(1921): message : see declaration of 'std::end'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,32): message : With the following template arguments:
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,32): message : '_Container=unknown-type'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,32): error C2784: 'const _Elem *std::end(std::initializer_list<_Elem>) noexcept': could not deduce template argument for 'std::initializer_list<_Elem>' from 'unknown-type'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.25.28610\include\initializer_list(63): message : see declaration of 'std::end'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,32): error C3536: '<begin>$L0': cannot be used before it is initialized
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,32): error C3536: '<end>$L0': cannot be used before it is initialized
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,30): error C2100: illegal indirection
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(117,2): error C2065: 'sounds': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(119,9): error C2659: '=': function as left operand
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(124,2): error C2065: 'FMOD_VECTOR': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(124,14): error C2146: syntax error: missing ';' before identifier 'listenerPos'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(124,14): error C2065: 'listenerPos': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(125,2): error C2065: 'FMOD_VECTOR': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(125,14): error C2146: syntax error: missing ';' before identifier 'listenerVel'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(125,14): error C2065: 'listenerVel': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(127,3): error C2065: 'listenerPos': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(130,3): error C2065: 'listenerVel': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(134,3): error C2065: 'listenerPos': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(135,3): error C2065: 'listenerVel': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(137,13): error C2065: 'listenerPos': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(137,28): error C2065: 'listenerPos': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(137,43): error C2065: 'listenerPos': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(138,38): error C2065: 'listenerPos': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(138,52): error C2065: 'listenerVel': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(163,16): error C2065: 'sounds': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(164,18): error C3536: 'exists': cannot be used before it is initialized
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(164,21): error C2065: 'sounds': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(170,14): error C2065: 'soundDataMap': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(171,5): error C3536: 'data': cannot be used before it is initialized
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(171,14): error C2065: 'soundDataMap': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(175,2): error C2065: 'FMOD_MODE': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(175,12): error C2146: syntax error: missing ';' before identifier 'mode'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(175,12): error C2065: 'mode': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(175,19): error C2065: 'FMOD_NONBLOCKING': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(177,2): error C2065: 'mode': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(177,31): error C2065: 'FMOD_3D': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(177,41): error C2065: 'FMOD_2D': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(178,2): error C2065: 'mode': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(178,33): error C2065: 'FMOD_LOOP_NORMAL': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(178,52): error C2065: 'FMOD_LOOP_OFF': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(179,2): error C2065: 'mode': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(179,35): error C2065: 'FMOD_CREATESTREAM': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(179,55): error C2065: 'FMOD_CREATECOMPRESSEDSAMPLE': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(182,13): error C2653: 'FMOD': is not a class or namespace name
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(182,8): error C2065: 'Sound': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(182,15): error C2065: 'sound': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(183,50): error C2065: 'mode': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(183,66): error C2065: 'sound': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(184,6): error C2065: 'sound': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(185,3): error C2065: 'sounds': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(185,21): error C2065: 'sound': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(192,102): error C2653: 'BreaksEngine': is not a class or namespace name
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(192,102): error C2061: syntax error: identifier 'SoundData'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(192,219): error C2065: 'soundData': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(192,246): error C2065: 'virtSetting': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(192,276): error C2065: 'soundData': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(192,314): error C2065: 'pos': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(192,209): error C2614: 'BreaksCore::BreaksChannel': illegal member initialization: 'soundData' is not a base or member
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(241,2): error C2065: 'channel': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(249,3): error C2065: 'channel': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(249,10): fatal error C1003: error count exceeds 100; stopping compilation
+  Breaksengine.cpp
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(22,14): error C2653: 'FMOD': is not a class or namespace name
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(22,14): error C2143: syntax error: missing ';' before '*'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(22,14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(22,22): error C2238: unexpected token(s) preceding ';'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(32,145): error C2653: 'BreaksEngine': is not a class or namespace name
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(32,145): error C2061: syntax error: identifier 'SoundData'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(50,16): error C2653: 'FMOD': is not a class or namespace name
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(50,16): error C2143: syntax error: missing ';' before '*'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(50,16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(50,35): error C2238: unexpected token(s) preceding ';'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(51,26): error C2653: 'BreaksEngine': is not a class or namespace name
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(51,26): error C2143: syntax error: missing ';' before '*'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(51,26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(51,37): error C2238: unexpected token(s) preceding ';'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(89,35): error C2653: 'FMOD': is not a class or namespace name
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(89,30): error C2065: 'Sound': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(89,36): error C2059: syntax error: '>'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(89): error C2062: type 'unknown-type' unexpected
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(89,46): error C2238: unexpected token(s) preceding ';'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(90,47): error C2653: 'BreaksEngine': is not a class or namespace name
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(90,38): error C2065: 'SoundData': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(90,48): error C2059: syntax error: '>'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(90): error C2062: type 'unknown-type' unexpected
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(90,62): error C2238: unexpected token(s) preceding ';'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(93,17): error C3646: 'sounds': unknown override specifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(93,17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(94,27): error C3646: 'soundDataMap': unknown override specifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(94,27): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(102,9): error C2659: '=': function as left operand
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(103,21): error C2653: 'FMOD': is not a class or namespace name
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(103,8): error C3861: 'System_Create': identifier not found
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(104,24): error C2653: 'FMOD': is not a class or namespace name
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(104,25): error C2065: 'FMOD_DEBUG_LEVEL_LOG': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(104,8): error C3861: 'Debug_Initialize': identifier not found
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(105,20): error C2065: 'FMOD_INIT_NORMAL': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(106,2): error C2065: 'FMOD_VECTOR': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(106,14): error C2146: syntax error: missing ';' before identifier 'listenerPos'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(106,14): error C2065: 'listenerPos': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(107,2): error C2065: 'FMOD_VECTOR': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(107,14): error C2146: syntax error: missing ';' before identifier 'listenerVel'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(107,14): error C2065: 'listenerVel': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(108,38): error C2065: 'listenerPos': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(108,52): error C2065: 'listenerVel': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,24): error C2065: 'sounds': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,24): error C2672: 'begin': no matching overloaded function found
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,32): error C2893: Failed to specialize function template 'unknown-type std::begin(_Container &)'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.25.28610\include\xutility(1911): message : see declaration of 'std::begin'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,32): message : With the following template arguments:
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,32): message : '_Container=unknown-type'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,32): error C2784: 'const _Elem *std::begin(std::initializer_list<_Elem>) noexcept': could not deduce template argument for 'std::initializer_list<_Elem>' from 'unknown-type'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.25.28610\include\initializer_list(57): message : see declaration of 'std::begin'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,24): error C2672: 'end': no matching overloaded function found
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,32): error C2893: Failed to specialize function template 'unknown-type std::end(_Container &)'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.25.28610\include\xutility(1921): message : see declaration of 'std::end'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,32): message : With the following template arguments:
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,32): message : '_Container=unknown-type'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,32): error C2784: 'const _Elem *std::end(std::initializer_list<_Elem>) noexcept': could not deduce template argument for 'std::initializer_list<_Elem>' from 'unknown-type'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.25.28610\include\initializer_list(63): message : see declaration of 'std::end'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,32): error C3536: '<begin>$L0': cannot be used before it is initialized
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,32): error C3536: '<end>$L0': cannot be used before it is initialized
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(114,30): error C2100: illegal indirection
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(117,2): error C2065: 'sounds': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(119,9): error C2659: '=': function as left operand
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(124,2): error C2065: 'FMOD_VECTOR': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(124,14): error C2146: syntax error: missing ';' before identifier 'listenerPos'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(124,14): error C2065: 'listenerPos': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(125,2): error C2065: 'FMOD_VECTOR': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(125,14): error C2146: syntax error: missing ';' before identifier 'listenerVel'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(125,14): error C2065: 'listenerVel': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(127,3): error C2065: 'listenerPos': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(130,3): error C2065: 'listenerVel': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(134,3): error C2065: 'listenerPos': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(135,3): error C2065: 'listenerVel': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(137,13): error C2065: 'listenerPos': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(137,28): error C2065: 'listenerPos': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(137,43): error C2065: 'listenerPos': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(138,38): error C2065: 'listenerPos': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(138,52): error C2065: 'listenerVel': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(163,16): error C2065: 'sounds': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(164,18): error C3536: 'exists': cannot be used before it is initialized
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(164,21): error C2065: 'sounds': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(170,14): error C2065: 'soundDataMap': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(171,5): error C3536: 'data': cannot be used before it is initialized
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(171,14): error C2065: 'soundDataMap': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(175,2): error C2065: 'FMOD_MODE': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(175,12): error C2146: syntax error: missing ';' before identifier 'mode'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(175,12): error C2065: 'mode': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(175,19): error C2065: 'FMOD_NONBLOCKING': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(177,2): error C2065: 'mode': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(177,31): error C2065: 'FMOD_3D': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(177,41): error C2065: 'FMOD_2D': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(178,2): error C2065: 'mode': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(178,33): error C2065: 'FMOD_LOOP_NORMAL': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(178,52): error C2065: 'FMOD_LOOP_OFF': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(179,2): error C2065: 'mode': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(179,35): error C2065: 'FMOD_CREATESTREAM': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(179,55): error C2065: 'FMOD_CREATECOMPRESSEDSAMPLE': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(182,13): error C2653: 'FMOD': is not a class or namespace name
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(182,8): error C2065: 'Sound': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(182,15): error C2065: 'sound': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(183,50): error C2065: 'mode': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(183,66): error C2065: 'sound': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(184,6): error C2065: 'sound': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(185,3): error C2065: 'sounds': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(185,21): error C2065: 'sound': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(192,102): error C2653: 'BreaksEngine': is not a class or namespace name
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(192,102): error C2061: syntax error: identifier 'SoundData'
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(192,219): error C2065: 'soundData': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(192,246): error C2065: 'virtSetting': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(192,276): error C2065: 'soundData': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(192,314): error C2065: 'pos': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(192,209): error C2614: 'BreaksCore::BreaksChannel': illegal member initialization: 'soundData' is not a base or member
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(241,2): error C2065: 'channel': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(249,3): error C2065: 'channel': undeclared identifier
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.cpp(249,10): fatal error C1003: error count exceeds 100; stopping compilation
+  Camera.cpp
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\Camera.cpp(79,14): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  DDSTextureLoader.cpp
+  DX11 Framework.cpp
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\CubeObject.h(8,34): warning C4100: 'graphics': unreferenced formal parameter
+  GroundPlane.cpp
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\GroundPlane.cpp(35,64): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\GroundPlane.cpp(58,27): warning C4244: '=': conversion from 'UINT' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=unsigned short
+          ]
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\GroundPlane.cpp(59,35): warning C4244: '=': conversion from 'UINT' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=unsigned short
+          ]
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\GroundPlane.cpp(60,37): warning C4244: '=': conversion from 'UINT' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=unsigned short
+          ]
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\GroundPlane.cpp(62,37): warning C4244: '=': conversion from 'UINT' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=unsigned short
+          ]
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\GroundPlane.cpp(63,35): warning C4244: '=': conversion from 'UINT' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=unsigned short
+          ]
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\GroundPlane.cpp(64,41): warning C4244: '=': conversion from 'UINT' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=unsigned short
+          ]
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\GroundPlane.cpp(72,33): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\GroundPlane.cpp(74,55): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\GroundPlane.cpp(15,8): warning C4189: 'du': local variable is initialized but not referenced
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\GroundPlane.cpp(16,8): warning C4189: 'dv': local variable is initialized but not referenced
+  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_impl_dx11.cpp
+  imgui_impl_win32.cpp
+  imgui_tables.cpp
+  imgui_widgets.cpp
+  OBJLoader.cpp
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(32,37): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(145,34): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(146,51): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(174,48): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(198,54): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(213,61): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(228,52): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(246,52): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(254,44): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+  SceneObject.cpp
+  SetUpGUI.cpp
+  Time.cpp
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\Time.cpp(38,14): warning C4244: '=': conversion from 'double' to '__int64', possible loss of data
+  Vector3.cpp
+  Generating Code...
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\ApplicationGraphics.cpp(293): warning C4715: 'ApplicationGraphics::UpdateWireFrame': not all control paths return a value

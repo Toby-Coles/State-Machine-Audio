@@ -3,6 +3,7 @@
 #include <map>
 #include <vector>
 #include <iterator>
+#include "Vector3.cpp"
 
 // ========================== Breaks Core ========================== //
 //Breaks core contains the core functionaliy of the engine, including
@@ -26,7 +27,12 @@ struct BreaksCore {
 		RESTART, PAUSE, MUTE
 	};
 
-	// ================= FMOD Channell Wrapper ================= //
+	// ================= FMOD Channell Wrapper ======================= //
+	// == The BreaksChannel wraps the FMOD::Channel so that it     == //
+	// == can be used as a part of the state machine, containing  == //
+	// == its channel, sound data and unique ID to keep track of == //
+	// == each channel as it is used through the state machine  == //
+
 	struct BreaksChannel {
 		BreaksChannel(BreaksCore& breaksCore, int soundID, BreaksEngine::SoundData* soundData, VirtualSetting virtSetting, Vector3& pos, float volume);
 		~BreaksChannel();
@@ -35,6 +41,7 @@ struct BreaksCore {
 		enum class State {
 			INIT,
 			TOPLAY,
+			PLAYING,
 			LOADING,
 			PREPLAYING,
 			VIRTUALISING,
@@ -60,6 +67,7 @@ struct BreaksCore {
 		float virtualCheckVirtualPeriod;
 		float virtualFadeInTime;
 		float virtualFadeOutTime;
+		float stopFadeOutTime;
 
 		State state = State::INIT;
 		float volume = 1.0f;
@@ -69,9 +77,9 @@ struct BreaksCore {
 		void SetUpdateFlag();
 		void Update(float deltaTime);
 		void UpdateParams();
-		void SetFadeIn();
-		void SetFadeOut();
-		bool VirtualCheck();
+		void RunFadeIn(float deltaTime);
+		void RunFadeOut(float deltaTime);
+		bool VirtualCheck(bool allowOneShot, float deltaTime);
 		bool IsPlaying();
 		bool IsOneShot();
 
@@ -185,6 +193,8 @@ void BreaksCore::LoadSound(int soundID)
 
 // ============================================================================================================ // 
 // ==================================== BreaksChannel Function Definitions==== ================================ // 
+// ============================================================================================================ // 
+
 
 BreaksCore::BreaksChannel::BreaksChannel(BreaksCore& breaksCore, int soundID, BreaksEngine::SoundData* soundData, VirtualSetting virtSetting, Vector3& pos, float volume) : 
 	core(breaksCore), soundID(soundID), soundData(soundData), virtualSetting(virtSetting), virtualDistance(soundData->virtualDistance), position(pos) {}
@@ -202,31 +212,129 @@ void BreaksCore::BreaksChannel::SetUpdateFlag()
 
 void BreaksCore::BreaksChannel::Update(float deltaTime)
 {
+	virtualTime += deltaTime;
+	// State machine 
+	switch (state)
+	{
+	case BreaksCore::BreaksChannel::State::INIT:
+		[[fallthrough]];
+		break;
+	case BreaksCore::BreaksChannel::State::TOPLAY:
+		// === TOPLAY ---> STOPPING === //
+		// ========================= //
+		if (stopRequested) {
+			state = State::STOPPING;
+			return;
+		}
+		// ========================= //
+
+
+		// === TOPLAY ---> STOPPING/VIRTUAL === //
+		// If the sound is a one shot, stop the sound
+		// Otherwise virtualise the sound
+		// ========================= //
+		if (VirtualCheck(true, deltaTime))
+		{
+			if (IsOneShot()) {
+				state = State::STOPPING;
+			}
+			else
+				state = State::VIRTUAL;
+			return;
+		}
+		// ========================= //
+
+
+
+
+
+		break;
+	case BreaksCore::BreaksChannel::State::PLAYING:
+		break;
+	case BreaksCore::BreaksChannel::State::LOADING:
+		break;
+	case BreaksCore::BreaksChannel::State::PREPLAYING:
+		break;
+	case BreaksCore::BreaksChannel::State::VIRTUALISING:
+		break;
+	case BreaksCore::BreaksChannel::State::VIRTUAL:
+		break;
+	case BreaksCore::BreaksChannel::State::STOPPING:
+		break;
+	case BreaksCore::BreaksChannel::State::STOPPED:
+		break;
+	default:
+		break;
+	}
 }
 
 void BreaksCore::BreaksChannel::UpdateParams()
 {
 }
 
-void BreaksCore::BreaksChannel::SetFadeIn()
+//Run the fade in logic for a channel
+void BreaksCore::BreaksChannel::RunFadeIn(float deltaTime)
 {
+	float currentVolume;
+	channel->getVolume(&currentVolume);
+	float newVolume = currentVolume + deltaTime / virtualFadeInTime;
+	if (newVolume >= volume) {
+		if (state == State::PREPLAYING) {
+			state = State::PLAYING;
+		}
+	}
+	else {
+		channel->setVolume(newVolume);
+	}
 }
 
-void BreaksCore::BreaksChannel::SetFadeOut()
+void BreaksCore::BreaksChannel::RunFadeOut(float deltaTime)
 {
+	float currentVolume;
+	channel->getVolume(&currentVolume);
+	float newVolume = currentVolume;
+	if (state == State::STOPPING) {
+		newVolume = currentVolume - deltaTime / stopFadeOutTime;
+	}
+	else if (state == State::VIRTUALISING) {
+		newVolume = currentVolume / deltaTime / virtualFadeOutTime;
+	}
+	if (newVolume <= 0.0f) {
+		if (state == State::STOPPING) {
+			channel->stop();
+			state = State::STOPPED;
+		}
+		else if (state == State::VIRTUALISING) {
+			state = State::VIRTUAL;
+			if (virtualSetting == VirtualSetting::RESTART) {
+				channel->stop();
+			}
+			else if (virtualSetting == VirtualSetting::PAUSE) {
+				channel->setPaused(true);
+			}
+			else if (virtualSetting == VirtualSetting::MUTE) {
+				channel->setVolume(0.0f);
+			}
+		}
+		channel->setVolume(newVolume);
+
+	}
 }
 
-bool BreaksCore::BreaksChannel::VirtualCheck()
+bool BreaksCore::BreaksChannel::VirtualCheck(bool allowOneShot, float deltaTime)
 {
 	return false;
 }
 
 bool BreaksCore::BreaksChannel::IsPlaying()
 {
-	return false;
+	bool isPlaying = channel->isPlaying(&isPlaying);
+
+	return isPlaying;
 }
 
 bool BreaksCore::BreaksChannel::IsOneShot()
 {
+
 	return false;
 }
