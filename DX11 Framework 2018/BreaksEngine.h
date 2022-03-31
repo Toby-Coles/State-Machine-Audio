@@ -1,6 +1,6 @@
 #pragma once
 
-#include "BreaksCore.cpp"
+#include "BreaksCore.h"
 #include "fmod.h"
 #include <fmod.hpp>
 #include <vector>
@@ -21,17 +21,17 @@
 class BreaksEngine
 {
 public:
-	BreaksEngine();
+	//BreaksEngine();
 	~BreaksEngine() {}
 
 	// === Core System Functions === // 
 	void Initialize();
 	void Update(float elapsed);
-	void ErrorCheck(FMOD_RESULT result);
+	//void ErrorCheck(FMOD_RESULT result);
 	void SetEarPos(Vector3 pos, bool isRelative);
 	
 	void ShutDown();
-	float RandomBetween();
+	//float RandomBetween();
 
 	//SoundData contains basic sound data information for each BreaksChannel sound
 	struct SoundData {
@@ -47,14 +47,14 @@ public:
 
 	// == Core Engine Functions == // 
 	//SoundStruct LoadSound(const char* name, const char* path);
-	FMOD::Sound* CreateStream(const char* path);
+	//FMOD::Sound* CreateStream(const char* path);
 
 	//void PlaySound(int SoundStruct sound, float volume /*position*/);
 	int RegisterSound(BreaksEngine::SoundData& soundData, bool load);
 	int PlaySound(int soundID, Vector3 pos, float volume);
 	void LoadSound(int soundID);
 	void UnloadSound(int soundID);
-	void StopSound(int soundID);
+	//void StopSound(int soundID);
 
 	bool CheckLoaded(int soundID);
 	void SetBreaksChannelVolume(int channelID, float volume);

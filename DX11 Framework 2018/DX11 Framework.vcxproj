@@ -383,7 +383,7 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="ApplicationGraphics.cpp" />
-    <ClCompile Include="BreaksCore.cpp" />
+    <ClCompile Include="BreaksCore.h" />
     <ClCompile Include="Breaksengine.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DDSTextureLoader.cpp" />
