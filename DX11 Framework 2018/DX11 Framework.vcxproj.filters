@@ -50,6 +50,7 @@
     <ClInclude Include="Structures.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="BreaksEngine.h" />
+    <ClInclude Include="BreaksChannel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Imgui\imgui.cpp">
@@ -84,8 +85,10 @@
     <ClCompile Include="SetUpGUI.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Breaksengine.cpp" />
-    <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="BreaksCore.h" />
+    <ClCompile Include="BreaksCore.cpp" />
+    <ClCompile Include="Vector3.h" />
+    <ClCompile Include="BreaksChannel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">

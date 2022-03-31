@@ -1,12 +1,12 @@
 #pragma once
 
-#include "BreaksCore.h"
+
 #include "fmod.h"
 #include <fmod.hpp>
 #include <vector>
 #include <map>
 #include <iostream>
-#include "Vector3.cpp"
+#include "Vector3.h"
 
 // ================================ Breaks Engine ================================== //
 //The Breaks Engine is a state machine oriented audio engine for application
@@ -17,11 +17,25 @@
 //added at the developers desire. 
 // ================================================================================ //
 
+//class BreaksCore;
+
+//SoundData contains basic sound data information for each BreaksChannel sound
+struct SoundData {
+	std::string name;
+	float volume;
+	float minDistance;
+	float maxDistance;
+	float virtualDistance;
+	bool is3D;
+	bool isLoop;
+	bool isStream;
+};
+
 
 class BreaksEngine
 {
 public:
-	//BreaksEngine();
+	BreaksEngine();
 	~BreaksEngine() {}
 
 	// === Core System Functions === // 
@@ -33,24 +47,14 @@ public:
 	void ShutDown();
 	//float RandomBetween();
 
-	//SoundData contains basic sound data information for each BreaksChannel sound
-	struct SoundData {
-		std::string name;
-		float volume;
-		float minDistance;
-		float maxDistance;
-		float virtualDistance;
-		bool is3D;
-		bool isLoop;
-		bool isStream;
-	};
+
 
 	// == Core Engine Functions == // 
 	//SoundStruct LoadSound(const char* name, const char* path);
 	//FMOD::Sound* CreateStream(const char* path);
 
 	//void PlaySound(int SoundStruct sound, float volume /*position*/);
-	int RegisterSound(BreaksEngine::SoundData& soundData, bool load);
+	int RegisterSound(SoundData& soundData, bool load);
 	int PlaySound(int soundID, Vector3 pos, float volume);
 	void LoadSound(int soundID);
 	void UnloadSound(int soundID);

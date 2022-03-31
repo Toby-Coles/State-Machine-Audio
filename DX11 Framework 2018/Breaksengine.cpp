@@ -1,14 +1,20 @@
 #pragma once
 
 #include "BreaksEngine.h"
+#include "BreaksCore.h"
+#include "BreaksChannel.h"
 
 BreaksCore* core = nullptr;
 
 
+BreaksEngine::BreaksEngine()
+{
+}
+
 // ====== Initialise the BreaksCore Framework ====== //
 void BreaksEngine::Initialize()
 {
-	core = new BreaksCore;
+	core = new BreaksCore();
 }
 
 void BreaksEngine::Update(float elapsed)
@@ -28,7 +34,7 @@ void BreaksEngine::ShutDown()
 }
 
 //Registers a sound to a unique ID, giving the option to load it directly after
-int BreaksEngine::RegisterSound(BreaksEngine::SoundData &soundData, bool load)
+int BreaksEngine::RegisterSound(SoundData &soundData, bool load)
 {
 	int soundID = core->nextSoundID;
 	core->nextSoundID++;
@@ -51,7 +57,7 @@ int BreaksEngine::PlaySound(int soundID, Vector3 pos, float volume)
 	{
 		return breaksChannelID;
 	}
-	core->channelMap[breaksChannelID] = std::make_unique<BreaksCore::BreaksChannel>(*core, soundID, core->soundDataMap[soundID], BreaksCore::VirtualSetting::MUTE, pos, volume);
+	core->channelMap[breaksChannelID] = std::make_unique<BreaksChannel>(*core, soundID, core->soundDataMap[soundID], VirtualSetting::MUTE, pos, volume);
 	return breaksChannelID;
 }
 
@@ -92,7 +98,7 @@ void BreaksEngine::SetBreaksChannelPosition(int channelID, Vector3 pos, bool isR
 	if (exists != core->channelMap.end())
 	{
 		auto &channel = exists->second;
-		channel->SetUpdateFlag(BreaksCore::BreaksChannel::UpdateFlag::POSITION, true);
+		channel->SetUpdateFlag(BreaksChannel::UpdateFlag::POSITION, true);
 		if (isRelative) {
 			Vector3 newPos = { channel->position.x + pos.x,
 							   channel->position.y + pos.y,

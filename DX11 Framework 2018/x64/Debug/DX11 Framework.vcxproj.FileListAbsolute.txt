@@ -1,2 +1,4 @@
 C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\x64\Debug\DX11 Framework.exe
 C:\Users\Toby\OneDrive - Staffordshire University\Year 3\FYP\DX11 Framework 2018\x64\Debug\DX11 Framework.pdb
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\x64\Debug\DX11 Framework.exe
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\x64\Debug\DX11 Framework.pdb

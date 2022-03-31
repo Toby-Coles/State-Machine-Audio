@@ -383,6 +383,8 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="ApplicationGraphics.cpp" />
+    <ClCompile Include="BreaksChannel.cpp" />
+    <ClCompile Include="BreaksCore.cpp" />
     <ClCompile Include="BreaksCore.h" />
     <ClCompile Include="Breaksengine.cpp" />
     <ClCompile Include="Camera.cpp" />
@@ -400,7 +402,7 @@
     <ClCompile Include="SceneObject.cpp" />
     <ClCompile Include="SetUpGUI.cpp" />
     <ClCompile Include="Time.cpp" />
-    <ClCompile Include="Vector3.cpp" />
+    <ClCompile Include="Vector3.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DX11 Framework.fx" />
@@ -408,6 +410,7 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="ApplicationGraphics.h" />
+    <ClInclude Include="BreaksChannel.h" />
     <ClInclude Include="BreaksEngine.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="DDSTextureLoader.h" />
