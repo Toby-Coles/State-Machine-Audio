@@ -16,6 +16,8 @@
 #include "CubeObject.h"
 #include "GroundPlane.h"
 #include "SetUpGUI.h"
+#include "BreaksEngine.h"
+
 
 using namespace DirectX;
 
@@ -82,6 +84,7 @@ private:
 	XMFLOAT3 _offset = XMFLOAT3(0.0f, 3.0f, 5.0f);
 
 	float _moveSpeed;
+	BreaksEngine* audioEngine;
 
 public:
 	Application();

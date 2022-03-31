@@ -1,6 +1,4 @@
 g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\vc142.pdb
-g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\vector3.obj
-g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\time.obj
 g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\setupgui.obj
 g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\sceneobject.obj
 g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\objloader.obj
@@ -15,13 +13,15 @@ g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\groundplane.obj
 g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\dx11 framework.obj
 g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\ddstextureloader.obj
 g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\camera.obj
+g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\breaksengine.obj
+g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\breakscore.obj
+g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\breakschannel.obj
 g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\applicationgraphics.obj
 g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\application.obj
-g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\breakscore.obj
-g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\breaksengine.obj
-g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\breakschannel.obj
-g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\dx11 framework.ilk
+g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\vector3.obj
+g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\time.obj
 g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\dx11 framework.exe
+g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\dx11 framework.ilk
 g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\dx11 framework.pdb
 g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\dx11 framework.res
 g:\fyp\fyp-artifact-\dx11 framework 2018\x64\debug\dx11 framework.tlog\cl.command.1.tlog

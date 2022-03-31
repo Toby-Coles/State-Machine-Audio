@@ -117,6 +117,15 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 
 	_moveSpeed = 3.0f;
 	
+	audioEngine->Initialize();
+
+	SoundData backgroundMusic;
+	backgroundMusic.fileName = ("Resources/TestSong.wav");
+	Vector3 soundPos;
+
+	soundPos.x = 0.0f; soundPos.y = 0.0f; soundPos.z = 0.0f;
+	audioEngine->RegisterSound(backgroundMusic, true);
+	audioEngine->PlayAudio(0, soundPos, 100);
 
 	//Set rotation values
 	_rotation = 0.0f;
@@ -309,32 +318,12 @@ void Application::Update()
 	_timer->Tick();
 	float deltaTime = _timer->DeltaTime();
 
+
 	//Updates the rotation values so they are constant
 	_rotation += (_rotationSpeed * deltaTime);
 	_earthRotation += (_earthRotationSpeed * deltaTime);
 
-	// HARD CODED SCENE OBJECT IMPLEMENTATION - NOT IMPLEMENTED HERE TO SHOW UNDERSTANDING
-	////Scene object creation
-	//sceneObjects.resize(5);
-	//XMMATRIX sol = XMMatrixIdentity();
-	//sol = XMMatrixMultiply(sol, XMMatrixScaling(0.7, 0.7, 0.7) * XMMatrixTranslation(0, 0, 0) * XMMatrixRotationRollPitchYaw(t * 1, t * 0.5, 0));
-	//XMStoreFloat4x4(&sceneObjects[0], sol);
-	//XMMATRIX planet1 = XMMatrixIdentity();
-	//planet1 = XMMatrixMultiply(planet1, XMMatrixScaling(0.25, 0.25, 0.25) * XMMatrixTranslation(1.5, 0, 0) * XMMatrixRotationRollPitchYaw(t * 0.8, t * 1, 0));
-	//XMStoreFloat4x4(&sceneObjects[1], planet1);
-	//XMMATRIX planet2 = XMMatrixIdentity();
-	//planet2 = XMMatrixMultiply(planet2, XMMatrixScaling(0.3, 0.3, 0.3) * XMMatrixTranslation(3, 0, 0) * XMMatrixRotationRollPitchYaw(t * 0.5, t * 1.4, 0));
-	//XMStoreFloat4x4(&sceneObjects[3], planet2);
-	//XMMATRIX planet1_moon = XMMatrixIdentity();
-	//planet1_moon = XMMatrixMultiply(planet1_moon, XMMatrixTranslation(5.5, 0, 0) * XMMatrixScaling(0.1, 0.1, 0.1) * XMMatrixRotationRollPitchYaw(0, t * 2, 0) * XMMatrixRotationRollPitchYaw(0, t * 1, 0) * XMMatrixTranslation(1.5, 0, 0) * XMMatrixRotationRollPitchYaw(0, t * 1, 0));
-	//XMStoreFloat4x4(&sceneObjects[2], planet1_moon);
-	//XMMATRIX planet2_moon = XMMatrixIdentity();
-	//planet2_moon = XMMatrixMultiply(planet2_moon, XMMatrixTranslation(6.5, 0, 0) * XMMatrixScaling(0.1, 0.1, 0.1) * XMMatrixRotationRollPitchYaw(0, t * 2, 0) * XMMatrixRotationRollPitchYaw(0, t * 1, 0) * XMMatrixTranslation(3, 0, 0) * XMMatrixRotationRollPitchYaw(0, t * 1.4, 0));
-	//XMStoreFloat4x4(&sceneObjects[4], planet2_moon);
-	////Plane object creation
-	//XMMATRIX plane = XMMatrixIdentity();
-	//plane = XMMatrixMultiply(plane, XMMatrixScaling(0.5, 0.5, 0.5) * XMMatrixTranslation(0, 0, 3));
-	//XMStoreFloat4x4(&gridPlane, plane);
+	audioEngine->Update(deltaTime);
 
 	//Sets the EyePosw for rendering to that of the active camera
 	appGFX->SetEyePosW(appGFX->GetCurrentCamera()->GetCameraPosition());

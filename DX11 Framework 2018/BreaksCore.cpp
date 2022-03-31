@@ -35,7 +35,6 @@ void BreaksCore::SetEarPos(Vector3& pos, bool isRelative)
 					   earPos.y + pos.y,
 					   earPos.z + pos.z };
 		listenerVel = { 0.0f, 0.0f, 0.0f };
-
 	}
 	else {
 		listenerPos = { pos.x, pos.y, pos.z };
@@ -87,7 +86,7 @@ void BreaksCore::LoadSound(int soundID)
 
 	//Create and register the sound
 	FMOD::Sound* sound = nullptr;
-	system->createSound(data->second->name.c_str(), mode, nullptr, &sound);
+	system->createSound(data->second->fileName.c_str(), mode, nullptr, &sound);
 	if (sound) {
 		sounds[soundID] = sound;
 	}

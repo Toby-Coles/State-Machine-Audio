@@ -21,7 +21,7 @@
 
 //SoundData contains basic sound data information for each BreaksChannel sound
 struct SoundData {
-	std::string name;
+	std::string fileName;
 	float volume;
 	float minDistance;
 	float maxDistance;
@@ -55,7 +55,7 @@ public:
 
 	//void PlaySound(int SoundStruct sound, float volume /*position*/);
 	int RegisterSound(SoundData& soundData, bool load);
-	int PlaySound(int soundID, Vector3 pos, float volume);
+	int PlayAudio(int soundID, Vector3 pos, float volume);
 	void LoadSound(int soundID);
 	void UnloadSound(int soundID);
 	//void StopSound(int soundID);

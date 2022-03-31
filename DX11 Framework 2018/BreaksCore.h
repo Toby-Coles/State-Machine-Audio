@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include <map>
 #include <vector>
 #include <iterator>
@@ -9,11 +8,8 @@
 #include <fmod.hpp>
 #include <bitset>
 
-
 class BreaksChannel;
 class BreaksEngine;
-
-
 
 // ========================== Breaks Core ========================== //
 //Breaks core contains the core functionaliy of the engine, including
@@ -30,16 +26,6 @@ public:
 
 	//Fmod system definition
 	FMOD::System* system;
-
-
-
-	// ================= FMOD Channell Wrapper ======================= //
-	// == The BreaksChannel wraps the FMOD::Channel so that it     == //
-	// == can be used as a part of the state machine, containing  == //
-	// == its channel, sound data and unique ID to keep track of == //
-	// == each channel as it is used through the state machine  == //
-
-	
 
 	Vector3 earPos;
 

@@ -46,7 +46,7 @@ int BreaksEngine::RegisterSound(SoundData &soundData, bool load)
 	return soundID;
 }
 
-int BreaksEngine::PlaySound(int soundID, Vector3 pos, float volume)
+int BreaksEngine::PlayAudio(int soundID, Vector3 pos, float volume)
 {
 	int breaksChannelID = core->nextBreakChannelID;
 	core->nextBreakChannelID++;
@@ -58,6 +58,7 @@ int BreaksEngine::PlaySound(int soundID, Vector3 pos, float volume)
 		return breaksChannelID;
 	}
 	core->channelMap[breaksChannelID] = std::make_unique<BreaksChannel>(*core, soundID, core->soundDataMap[soundID], VirtualSetting::MUTE, pos, volume);
+	
 	return breaksChannelID;
 }
 
@@ -65,6 +66,7 @@ void BreaksEngine::LoadSound(int soundID)
 {
 	core->LoadSound(soundID);
 }
+
 
 void BreaksEngine::UnloadSound(int soundID)
 {

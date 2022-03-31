@@ -26,7 +26,8 @@ void BreaksChannel::Update(float deltaTime)
 	switch (state)
 	{
 	case BreaksChannel::State::INIT:
-		[[fallthrough]];
+		//[[fallthrough]];
+		state = State::TOPLAY;
 		break;
 	case BreaksChannel::State::TOPLAY:
 		// === TOPLAY ---> STOPPING === //
@@ -77,6 +78,7 @@ void BreaksChannel::Update(float deltaTime)
 			channel->set3DAttributes(&pos, nullptr);
 			channel->set3DMinMaxDistance(soundData->minDistance, soundData->maxDistance);
 			channel->setVolume(volume);
+			
 			channel->setPaused(false);
 		}
 		else
@@ -90,7 +92,7 @@ void BreaksChannel::Update(float deltaTime)
 		// === PLAYING ---> STOPPING === //
 		// Does the sound need to be stopped?
 		// =========================== //
-		if (!IsPlaying() || stopRequested) {
+		if (/*!IsPlaying() ||*/ stopRequested) {
 			state = State::STOPPING;
 		}
 		// =========================== //
@@ -152,7 +154,7 @@ void BreaksChannel::Update(float deltaTime)
 		//Run fade out logic and stop the channel
 		RunFadeOut(deltaTime);
 		UpdateParams();
-		if (!IsPlaying() || volume == 0.0f) {
+		if (stopRequested || volume == 0.0f) {
 			channel->stop();
 			state = State::STOPPED;
 			return;

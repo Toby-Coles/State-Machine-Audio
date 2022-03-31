@@ -14,6 +14,12 @@ enum class VirtualSetting
 	RESTART, PAUSE, MUTE
 };
 
+
+// ================= FMOD Channell Wrapper ======================= //
+	// == The BreaksChannel wraps the FMOD::Channel so that it     == //
+	// == can be used as a part of the state machine, containing  == //
+	// == its channel, sound data and unique ID to keep track of == //
+	// == each channel as it is used through the state machine  == //
 struct BreaksChannel {
 	BreaksChannel(class BreaksCore& breaksCore, int soundID, struct SoundData* soundData, VirtualSetting virtSetting, Vector3& pos, float volume);
 	~BreaksChannel();
