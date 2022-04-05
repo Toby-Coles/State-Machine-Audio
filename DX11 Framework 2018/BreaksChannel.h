@@ -21,7 +21,7 @@ enum class VirtualSetting
 	// == its channel, sound data and unique ID to keep track of == //
 	// == each channel as it is used through the state machine  == //
 struct BreaksChannel {
-	BreaksChannel(class BreaksCore& breaksCore, int soundID, struct SoundData* soundData, VirtualSetting virtSetting, Vector3& pos, float volume);
+	BreaksChannel(class BreaksCore& breaksCore, int soundID, struct SoundData* soundData, VirtualSetting virtSetting, Vector3& pos, float vol);
 	~BreaksChannel();
 
 	//Defines the different states of the state machine

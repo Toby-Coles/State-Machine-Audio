@@ -52,15 +52,15 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	_cube->GenerateTexture(L"Textures/Crate_SPEC.dds", appGFX->GetDevice());
 	_worldSceneObjects.push_back(_cube);
 
-	//Create the earth object in the scene
-	_earth = new SceneObject(appGFX);
-	_earth->LoadModelMesh("Models/sphere2.obj", appGFX->GetDevice());
-	_earth->SetPosition(XMFLOAT3(0.0f, 0.0f, 0.0f));
-	_earth->SetScale(XMFLOAT3(10.0f, 10.0f, 10.0f));
-	_earth->GenerateTexture(L"Textures/earth_color.dds", appGFX->GetDevice());
-	_earth->GenerateTexture(L"Textures/earth_spec.dds", appGFX->GetDevice());
-	_earth->GenerateTexture(L"Textures/earth_night.dds", appGFX->GetDevice());
-	_worldSceneObjects.push_back(_earth);
+	////Create the earth object in the scene
+	//_earth = new SceneObject(appGFX);
+	//_earth->LoadModelMesh("Models/sphere2.obj", appGFX->GetDevice());
+	//_earth->SetPosition(XMFLOAT3(0.0f, 0.0f, 0.0f));
+	//_earth->SetScale(XMFLOAT3(10.0f, 10.0f, 10.0f));
+	//_earth->GenerateTexture(L"Textures/earth_color.dds", appGFX->GetDevice());
+	//_earth->GenerateTexture(L"Textures/earth_spec.dds", appGFX->GetDevice());
+	//_earth->GenerateTexture(L"Textures/earth_night.dds", appGFX->GetDevice());
+	//_worldSceneObjects.push_back(_earth);
 
 	_ship = new SceneObject(appGFX);
 	_ship->LoadModelMesh("Models/userModel.obj", appGFX->GetDevice());
@@ -108,7 +108,21 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	_plane->GeneratePlane(30.0f, 30.0f, 8, 8);
 	_plane->SetPosition (XMFLOAT3(0.0f, -10.0f, 0.0f));
 	_plane->GenerateTexture(L"Textures/planeSurface.dds", appGFX->GetDevice());
-	_showGridPlane = false;
+	_showGridPlane = true;
+
+	_warehouse = new SceneObject(appGFX);
+	_warehouse->LoadModelMesh("Models/sponza.obj", appGFX->GetDevice());
+	_warehouse->SetPosition(XMFLOAT3(0.0f, 0.0f, 0.0f));
+	_warehouse->SetScale(XMFLOAT3(0.01, 0.01, 0.01));
+	_warehouse->GenerateTexture(L"Textures/planeSurface.dds", appGFX->GetDevice());
+	_worldSceneObjects.push_back(_warehouse);
+
+	_speaker = new SceneObject(appGFX);
+	_speaker->LoadModelMesh("Models/SpeakerStudio.obj", appGFX->GetDevice());
+	_speaker->SetPosition(XMFLOAT3(0.0f, -10.0f, 0.0f));
+	_speaker->SetScale(XMFLOAT3(1.0f, 1.0f, 1.0f));
+	_speaker->GenerateTexture(L"Textures/factorytexture.dds", appGFX->GetDevice());
+	_worldSceneObjects.push_back(_speaker);
 	
 	//Initialise the timer in the program
 	_timer = new TimeKeep();
@@ -118,14 +132,14 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	_moveSpeed = 3.0f;
 	
 	audioEngine->Initialize();
-
+	_currentAudioID = 0;
 	SoundData backgroundMusic;
 	backgroundMusic.fileName = ("Resources/TestSong.wav");
 	Vector3 soundPos;
 
 	soundPos.x = 0.0f; soundPos.y = 0.0f; soundPos.z = 0.0f;
-	audioEngine->RegisterSound(backgroundMusic, true);
-	audioEngine->PlayAudio(0, soundPos, 100);
+	audioEngine->RegisterSound(backgroundMusic, true); //ID 0
+	
 
 	//Set rotation values
 	_rotation = 0.0f;
@@ -320,17 +334,17 @@ void Application::Update()
 
 
 	//Updates the rotation values so they are constant
-	_rotation += (_rotationSpeed * deltaTime);
-	_earthRotation += (_earthRotationSpeed * deltaTime);
+	//_rotation += (_rotationSpeed * deltaTime);
+	//_earthRotation += (_earthRotationSpeed * deltaTime);
 
 	audioEngine->Update(deltaTime);
 
 	//Sets the EyePosw for rendering to that of the active camera
 	appGFX->SetEyePosW(appGFX->GetCurrentCamera()->GetCameraPosition());
 
-	_cube->SetRotation(XMFLOAT3(_rotation, 0.3f, 0.3f));
+	//_cube->SetRotation(XMFLOAT3(_rotation, 0.3f, 0.3f));
 
-	_earth->SetRotation (XMFLOAT3(0.0f, _earthRotation, 0.0f ));
+	//_earth->SetRotation (XMFLOAT3(0.0f, _earthRotation, 0.0f ));
 
 	//Update Scene Objects
 	for each (SceneObject* object in _worldSceneObjects)
@@ -405,12 +419,12 @@ void Application::UpdateCameraControlls(float deltaTime)
 	//Camera controlls for W, A, S and D
 
 	//W - S
-	if (GetAsyncKeyState('W')) _camera1->MoveFowardBack(10.0f * deltaTime);
-	else if (GetAsyncKeyState('S')) _camera1->MoveFowardBack(-10.0f * deltaTime);
+	if (GetAsyncKeyState('W')) _camera1->MoveFowardBack(5.0f * deltaTime);
+	else if (GetAsyncKeyState('S')) _camera1->MoveFowardBack(-5.0f * deltaTime);
 	
 	//A - D
-	if (GetAsyncKeyState('A')) _camera1->Strafe(-10.0f * deltaTime);
-	else if (GetAsyncKeyState('D')) _camera1->Strafe(10.0f * deltaTime);
+	if (GetAsyncKeyState('A')) _camera1->Strafe(-5.0f * deltaTime);
+	else if (GetAsyncKeyState('D')) _camera1->Strafe(5.0f * deltaTime);
 	
 	//Q-E
 	if (GetAsyncKeyState('Q')) _camera1->RotateY(-5.0f * deltaTime);
@@ -442,20 +456,36 @@ void Application::UpdateCameraControlls(float deltaTime)
 void Application::ShowSceneUI()
 {
 	// The definition of the scene UI
-	XMFLOAT3 earthScale = XMFLOAT3(_earth->GetScale());
-	XMFLOAT3 earthPosition = XMFLOAT3(_earth->GetPosition());
+	//XMFLOAT3 earthScale = XMFLOAT3(_earth->GetScale());
+	//XMFLOAT3 earthPosition = XMFLOAT3(_earth->GetPosition());
 	XMFLOAT3 shipOrbiterScale = XMFLOAT3(_ship->GetScale());
 	XMFLOAT3 shipPosition = XMFLOAT3(_ship->GetPosition());
 
+	
+
+	Vector3 soundPos;
+	soundPos.x = 0.0f; soundPos.y = 0.0f; soundPos.z = 0.0f;
+
 	ImGui::Begin("Scene Object Control Panel");
-	ImGui::Text("Earth");
-	ImGui::SliderFloat("Earth Scale X", &earthScale.x, 0.0f, 50.0f);
-	ImGui::SliderFloat("Earth Scale Y", &earthScale.y, 0.0f, 50.0f);
+	ImGui::Text("Jukebox Controls");
+	if (ImGui::Button("Play")) 
+	{
+		_jukeboxChannelID = audioEngine->PlayAudio(_currentAudioID, soundPos, 0.5);
+	}
+	if (ImGui::Button("Stop")) {
+		audioEngine->StopBreaksChannel(_jukeboxChannelID);
+	}
+
+	ImGui::SliderFloat("JukeboxVolume", &jukeBoxVolume, 0.0f, 1.0f);
+	audioEngine->SetBreaksChannelVolume(_jukeboxChannelID, jukeBoxVolume);
+
+	//ImGui::SliderFloat("Earth Scale X", &earthScale.x, 0.0f, 50.0f);
+	/*ImGui::SliderFloat("Earth Scale Y", &earthScale.y, 0.0f, 50.0f);
 	ImGui::SliderFloat("Earth Scale Z", &earthScale.z, 0.0f, 50.0f);
 	ImGui::SliderFloat("Earth Rotation", &_earthRotationSpeed, 0.0f, 2.0f);
 	ImGui::SliderFloat("Position X", &earthPosition.x, -50.0f, 50.0f);
 	ImGui::SliderFloat("Position Y", &earthPosition.y, -50.0f, 50.0f);
-	ImGui::SliderFloat("Position Z", &earthPosition.z, -50.0f, 50.0f);
+	ImGui::SliderFloat("Position Z", &earthPosition.z, -50.0f, 50.0f);*/
 	ImGui::Text("SpaceShip(Orbiter)");
 	ImGui::SliderFloat("Ship Scale X", &shipOrbiterScale.x, 0.0f, 50.0f);
 	ImGui::SliderFloat("Ship Scale Y", &shipOrbiterScale.y, 0.0f, 50.0f);
@@ -511,11 +541,11 @@ void Application::ShowSceneUI()
 	
 	ImGui::End();
 
-	//Sets the data that may have been altered by the UI
-	_earth->SetScale(earthScale);
-	_earth->SetPosition(earthPosition);
-	_ship->SetScale(shipOrbiterScale);
-	_ship->SetPosition(shipPosition);
+	////Sets the data that may have been altered by the UI
+	//_earth->SetScale(earthScale);
+	//_earth->SetPosition(earthPosition);
+	//_ship->SetScale(shipOrbiterScale);
+	//_ship->SetPosition(shipPosition);
 }
 
 void Application::Draw()
@@ -559,34 +589,6 @@ void Application::Draw()
 
 	appGFX->Present();
 
-	//HARD CODED RENDERING ///////////////////////////////////////////////////////////////////////
-	/*XMFLOAT4X4 world = appGFX->GetWorld();
-	Render all planets
-	if (cubeView == true)
-	{
-
-		for (int i = 0; i < 5; i++)
-		{
-
-			world = XMLoadFloat4x4(&sceneObjects[i]);
-			cb.mWorld = XMMatrixTranspose(world);
-			_pImmediateContext->UpdateSubresource(_pConstantBuffer, 0, nullptr, &cb, 0, 0);
-
-			_pImmediateContext->DrawIndexed(36, 0, 0);
-		}
-	}
-	else if (pyramidView == true)
-	{
-		for (int i = 0; i < 5; i++)
-		{
-
-			appGFX->GetWorld()  = XMLoadFloat4x4(&sceneObjects[i]);
-			appGFX->GetCB().mWorld = XMMatrixTranspose(world);
-			_pImmediateContext->UpdateSubresource(_pConstantBuffer, 0, nullptr, &cb, 0, 0);
-
-			_pImmediateContext->DrawIndexed(18, 0, 0);
-		}
-	}*/
 
 
 	

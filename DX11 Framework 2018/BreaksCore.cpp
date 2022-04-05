@@ -47,6 +47,9 @@ void BreaksCore::SetEarPos(Vector3& pos, bool isRelative)
 //The core update function
 void BreaksCore::Update(float deltaTime)
 {
+	
+
+
 	std::vector<BreaksChannelMap::iterator> stoppedChannels;
 	//Itterate through each channel and call the channel specific update function via the state machine
 	for (auto iterator = channelMap.begin(), end = channelMap.end(); iterator != end; iterator++) {

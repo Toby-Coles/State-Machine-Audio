@@ -56,6 +56,7 @@ public:
 	//void PlaySound(int SoundStruct sound, float volume /*position*/);
 	int RegisterSound(SoundData& soundData, bool load);
 	int PlayAudio(int soundID, Vector3 pos, float volume);
+	
 	void LoadSound(int soundID);
 	void UnloadSound(int soundID);
 	//void StopSound(int soundID);

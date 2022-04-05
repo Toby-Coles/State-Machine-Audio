@@ -5,8 +5,11 @@
 // ============================================================================================================ // 
 // ==================================== BreaksChannel Function Definitions==== ================================ // 
 // ============================================================================================================ // 
-BreaksChannel::BreaksChannel(BreaksCore& breaksCore, int soundID, SoundData* soundData, VirtualSetting virtSetting, Vector3& pos, float volume) :
-	core(breaksCore), soundID(soundID), soundData(soundData), virtualSetting(virtSetting), virtualDistance(soundData->virtualDistance), position(pos) {}
+BreaksChannel::BreaksChannel(BreaksCore& breaksCore, int soundID, SoundData* soundData, VirtualSetting virtSetting, Vector3& pos, float vol) :
+	core(breaksCore), soundID(soundID), soundData(soundData), virtualSetting(virtSetting), virtualDistance(soundData->virtualDistance), position(pos) {
+
+	volume = vol;
+}
 
 BreaksChannel::~BreaksChannel()
 {

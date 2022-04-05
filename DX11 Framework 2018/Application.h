@@ -57,6 +57,8 @@ private:
 	SceneObject* _earth;
 	SceneObject* _ship;
 	SceneObject* _shipPlayer;
+	SceneObject* _warehouse;
+	SceneObject* _speaker;
 
 	UserInterface _ui;
 
@@ -85,6 +87,10 @@ private:
 
 	float _moveSpeed;
 	BreaksEngine* audioEngine;
+
+	int _currentAudioID;
+	int _jukeboxChannelID;
+	float jukeBoxVolume = 0.5f;
 
 public:
 	Application();
