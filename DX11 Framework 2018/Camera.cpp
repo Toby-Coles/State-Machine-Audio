@@ -146,6 +146,17 @@ XMVECTOR Camera::GetCameraVecPosition() {
 	return XMLoadFloat3(&position);
 }
 
+Vector3 Camera::GetCameraVectorPos()
+{
+	Vector3 position;
+	position.x = _position.x;
+	position.y = _position.y;
+	position.z = _position.z;
+
+	return position;
+}
+
+
 XMFLOAT3 Camera::GetCameraLookAtPoint()
 {
 	return _look;
@@ -156,9 +167,28 @@ XMVECTOR Camera::GetLookAtVec()
 	return XMLoadFloat3(&_look);
 }
 
+Vector3 Camera::GetCameraForwardVec() {
+	Vector3 forward;
+	forward.x = _look.x;
+	forward.y = _look.y;
+	forward.z = _look.z;
+
+	return forward;
+
+}
+
 XMFLOAT3 Camera::GetCameraUp()
 {
 	return _up;
+}
+
+Vector3 Camera::GetCameraUpVector() {
+	Vector3 up;
+	up.x = _up.x;
+	up.y = _up.y;
+	up.z = _up.z;
+
+	return up;
 }
 
 void Camera::MoveFowardBack(float d)

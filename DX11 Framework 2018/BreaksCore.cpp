@@ -26,7 +26,7 @@ BreaksCore::~BreaksCore()
 	system = nullptr;
 }
 
-void BreaksCore::SetEarPos(Vector3& pos, bool isRelative)
+void BreaksCore::SetEarPos(Vector3& pos, bool isRelative, Vector3 forward, Vector3 up)
 {
 	FMOD_VECTOR listenerPos;
 	FMOD_VECTOR listenerVel;
@@ -41,7 +41,17 @@ void BreaksCore::SetEarPos(Vector3& pos, bool isRelative)
 		listenerVel = { 0.0f, 0.0f, 0.0f };
 	}
 	earPos = { listenerPos.x, listenerPos.y, listenerPos.z };
-	system->set3DListenerAttributes(0, &listenerPos, &listenerVel, nullptr, nullptr);
+	FMOD_VECTOR fvecForward;
+	fvecForward.x = forward.x;
+	fvecForward.y = forward.y;
+	fvecForward.z = forward.z;
+
+	FMOD_VECTOR fvecUp;
+	fvecUp.x = up.x;
+	fvecUp.y = up.y;
+	fvecUp.z = up.z;
+
+	system->set3DListenerAttributes(0, &listenerPos, &listenerVel, &fvecForward, &fvecUp);
 }
 
 //The core update function

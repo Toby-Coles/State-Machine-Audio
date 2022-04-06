@@ -7,6 +7,7 @@
 #include "resource.h"
 #include "DDSTextureLoader.h"
 #include <windowsx.h>
+#include "Vector3.h"
 
 using namespace DirectX;
 
@@ -41,9 +42,15 @@ public:
 	XMFLOAT3 GetCameraPosition();
 	XMVECTOR GetCameraVecPosition();
 
+	Vector3 GetCameraVectorPos();
+
+
 	XMFLOAT3 GetCameraLookAtPoint();
 	XMVECTOR GetLookAtVec();
+	Vector3 GetCameraForwardVec();
 	XMFLOAT3 GetCameraUp();
+
+	Vector3 GetCameraUpVector();
 
 	void MoveFowardBack(float d);
 	void Strafe(float d);

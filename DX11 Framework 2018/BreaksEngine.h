@@ -42,12 +42,12 @@ public:
 	void Initialize();
 	void Update(float elapsed);
 	//void ErrorCheck(FMOD_RESULT result);
-	void SetEarPos(Vector3 pos, bool isRelative);
+	void SetEarPos(Vector3 pos, bool isRelative, Vector3 forward, Vector3 up);
+
+	void GetOcclusion(FMOD_VECTOR* listenerPos, FMOD_VECTOR* sourcePos, float directOcclusion, float reverbOcclusion);
 	
 	void ShutDown();
 	//float RandomBetween();
-
-
 
 	// == Core Engine Functions == // 
 	//SoundStruct LoadSound(const char* name, const char* path);
@@ -63,9 +63,12 @@ public:
 
 	bool CheckLoaded(int soundID);
 	void SetBreaksChannelVolume(int channelID, float volume);
+	void SetSoundDirection(int channelID, Vector3 direction, Vector3 coneSize);
 	void SetBreaksChannelPosition(int channelID, Vector3 pos, bool isRelative);
 	void StopBreaksChannel(int channelID);
 	void VirtualiseBreaksChannel(int channelID);
 	void DeVirtualiseBreaksChannel(int channelID);
+	FMOD::Reverb3D* CreateReverb(Vector3 position, FMOD_REVERB_PROPERTIES properties);
+	void CreateFmodGeometry(FMOD::Geometry* geometry, int maxPoligons, int maxVertices);
 };
 

@@ -19,7 +19,7 @@ class BreaksCore {
 public:
 	BreaksCore();
 	~BreaksCore();
-	void SetEarPos(Vector3& pos, bool isRelative);
+	void SetEarPos(Vector3& pos, bool isRelative, Vector3 forward, Vector3 up);
 	void Update(float deltaTime);
 	bool CheckLoaded(int soundID);
 	void LoadSound(int soundID);

@@ -36,8 +36,8 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	_camera1 = new Camera();
 	   
 
-	_camera1->SetCameraPosition(XMFLOAT3(0.0f, 0.0f, 15.5f));
-	_camera1->LookAt(_camera1->GetCameraPosition(), XMFLOAT3(0.0f, 0.0f, 1.0f), _camera1->GetCameraUp());
+	_camera1->SetCameraPosition(XMFLOAT3(0.0f, -3.0f, 15.5f));
+	_camera1->LookAt(_camera1->GetCameraPosition(), XMFLOAT3(0.0f, 0.0f, 0.0f), _camera1->GetCameraUp());
 	_camera1->SetLens(90.0f, 1920 /1080, 0.01f, 1000.0f);
 
 	
@@ -101,7 +101,7 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	_skyMap->SetPosition(XMFLOAT3(0.0f, 0.0f, 5.5f));
 	_skyMap->SetScale(XMFLOAT3(100.0f, 100.0f, 100.0f));
 	_skyMap->SetRotation(XMFLOAT3(0.0f, 0.0f, 0.0f));
-	_skyMap->GenerateTexture(L"Textures/stars_map.dds", appGFX->GetDevice());
+	_skyMap->GenerateTexture(L"Textures/Skymap.dds", appGFX->GetDevice());
 
 	//Creates the ground plane
 	_plane = new GroundPlane(appGFX);
@@ -111,33 +111,75 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	_showGridPlane = true;
 
 	_warehouse = new SceneObject(appGFX);
-	_warehouse->LoadModelMesh("Models/sponza.obj", appGFX->GetDevice());
-	_warehouse->SetPosition(XMFLOAT3(0.0f, 0.0f, 0.0f));
-	_warehouse->SetScale(XMFLOAT3(0.01, 0.01, 0.01));
+	_warehouse->LoadModelMesh("Models/testscene.obj", appGFX->GetDevice());
+	_warehouse->SetPosition(XMFLOAT3(0.0f, -5.0f, 0.0f));
+	_warehouse->SetScale(XMFLOAT3(0.8f,0.8f,0.8f));
 	_warehouse->GenerateTexture(L"Textures/planeSurface.dds", appGFX->GetDevice());
 	_worldSceneObjects.push_back(_warehouse);
-
+	
 	_speaker = new SceneObject(appGFX);
-	_speaker->LoadModelMesh("Models/SpeakerStudio.obj", appGFX->GetDevice());
-	_speaker->SetPosition(XMFLOAT3(0.0f, -10.0f, 0.0f));
-	_speaker->SetScale(XMFLOAT3(1.0f, 1.0f, 1.0f));
-	_speaker->GenerateTexture(L"Textures/factorytexture.dds", appGFX->GetDevice());
+	_speaker->LoadModelMesh("Models/SpeakerSoloTri.obj", appGFX->GetDevice());
+	_speaker->SetPosition(XMFLOAT3(25.0f, -5.1f, -20.0f));
+	_speaker->SetScale(XMFLOAT3(1.2f, 1.2f, 1.2f));
+	_speaker->GenerateTexture(L"Textures/white.dds", appGFX->GetDevice());
 	_worldSceneObjects.push_back(_speaker);
 	
+	_speaker2 = new SceneObject(appGFX);
+	_speaker2->LoadModelMesh("Models/SpeakerSoloTri.obj", appGFX->GetDevice());
+	_speaker2->SetPosition(XMFLOAT3(25.0f, -5.1f, -30.0f));
+	_speaker2->SetScale(XMFLOAT3(1.2f, 1.2f, 1.2f));
+	_speaker2->GenerateTexture(L"Textures/white.dds", appGFX->GetDevice());
+	_worldSceneObjects.push_back(_speaker2);
+
 	//Initialise the timer in the program
 	_timer = new TimeKeep();
 	_timer->Reset();
 	_timer->Start();
 
 	_moveSpeed = 3.0f;
+
+
 	
 	audioEngine->Initialize();
-	_currentAudioID = 0;
+
+	hallReverbZone = audioEngine->CreateReverb(Vector3{ -70.0f, -5.1f, -30.0f }, FMOD_PRESET_ALLEY);
+	_currentAudioID = 1;
+	
+
+	audioEngine->CreateFmodGeometry(wallGeometry, 200, 1200);
+	/*FMOD_VECTOR vertices[3];
+	vertices[0] = { 0.0f, 0.0f, 0.0f };
+	vertices[1] = { 0.0f, 1.0f, 0.0f };
+	vertices[2] = { 0.0f, 0.0f, 1.0f };*/
+
+	FMOD_VECTOR rectangle[4] = {{ -100, -100, 0}, { -100, 100, 0}, { 100,100, 0}, { 10, -100, 0} };
+
+	int index = 0;
+	
+	FMOD_RESULT  result = wallGeometry->addPolygon(1.0f, 1.0f, true, 4, rectangle, &index);
+		
+	
+	FMOD_VECTOR worldPos = { 25.0f, -5.0f, -10.0f };
+	wallGeometry->setPosition(&worldPos);
+	FMOD_VECTOR occlusionRotate = { 0, 0, -1 }; // rotation object geometry
+	FMOD_VECTOR occlusionUp = { 0, 1, 0 };
+
+	wallGeometry->setRotation(&occlusionRotate, &occlusionUp);
+	wallGeometry->setActive(true);
+
 	SoundData backgroundMusic;
 	backgroundMusic.fileName = ("Resources/TestSong.wav");
 	Vector3 soundPos;
-
 	soundPos.x = 0.0f; soundPos.y = 0.0f; soundPos.z = 0.0f;
+
+	SoundData speakerMusic;
+	speakerMusic.fileName = ("Resources/Brasil.wav");
+	
+	brasilPos.x = (25.0f); brasilPos.y = (-5.1f); brasilPos.z = (-25.0f);
+	audioEngine->RegisterSound(speakerMusic, true);
+	audioEngine->PlayAudio(0, brasilPos, 14);
+
+	
 	audioEngine->RegisterSound(backgroundMusic, true); //ID 0
 	
 
@@ -332,13 +374,17 @@ void Application::Update()
 	_timer->Tick();
 	float deltaTime = _timer->DeltaTime();
 
+	audioEngine->SetEarPos(_camera1->GetCameraVectorPos(), false, _camera1->GetCameraForwardVec(), _camera1->GetCameraUpVector());
 
 	//Updates the rotation values so they are constant
 	//_rotation += (_rotationSpeed * deltaTime);
 	//_earthRotation += (_earthRotationSpeed * deltaTime);
 
 	audioEngine->Update(deltaTime);
-
+	FMOD_VECTOR listenerPos = { _camera1->GetCameraVectorPos().x,_camera1->GetCameraVectorPos().y, _camera1->GetCameraVectorPos().z };
+	FMOD_VECTOR brasilVector = { brasilPos.x, brasilPos.y, brasilPos.z };
+	audioEngine->GetOcclusion(&listenerPos, &brasilVector, 0.9f, 0.9f);
+	
 	//Sets the EyePosw for rendering to that of the active camera
 	appGFX->SetEyePosW(appGFX->GetCurrentCamera()->GetCameraPosition());
 
@@ -351,6 +397,7 @@ void Application::Update()
 	{
 		object->Update();
 	}
+	
 
 	//Set camera 2/'s position to the ship object with a reletive offset
 	_camera2->SetPosition(
@@ -417,22 +464,22 @@ void Application::UpdateShipControlls(float deltaTime) {
 void Application::UpdateCameraControlls(float deltaTime)
 {
 	//Camera controlls for W, A, S and D
-
+	if (GetAsyncKeyState('C')) _camMoveSpeed = 10.0f;
 	//W - S
-	if (GetAsyncKeyState('W')) _camera1->MoveFowardBack(5.0f * deltaTime);
-	else if (GetAsyncKeyState('S')) _camera1->MoveFowardBack(-5.0f * deltaTime);
+	if (GetAsyncKeyState('W')) _camera1->MoveFowardBack(_camMoveSpeed * deltaTime);
+	else if (GetAsyncKeyState('S')) _camera1->MoveFowardBack(-_camMoveSpeed * deltaTime);
 	
 	//A - D
-	if (GetAsyncKeyState('A')) _camera1->Strafe(-5.0f * deltaTime);
-	else if (GetAsyncKeyState('D')) _camera1->Strafe(5.0f * deltaTime);
-	
+	if (GetAsyncKeyState('A')) _camera1->Strafe(-_camMoveSpeed * deltaTime);
+	else if (GetAsyncKeyState('D')) _camera1->Strafe(_camMoveSpeed * deltaTime);
+
 	//Q-E
-	if (GetAsyncKeyState('Q')) _camera1->RotateY(-5.0f * deltaTime);
-	else if (GetAsyncKeyState('E')) _camera1->RotateY(5.0f * deltaTime);
-	
+	if (GetAsyncKeyState('Q')) _camera1->RotateY(-_camMoveSpeed * deltaTime);
+	else if (GetAsyncKeyState('E')) _camera1->RotateY(_camMoveSpeed * deltaTime);
+
 	//R-F
-	if (GetAsyncKeyState('R')) _camera1->Pitch(-5.0f * deltaTime);
-	else if (GetAsyncKeyState('F')) _camera1->Pitch(5.0f * deltaTime);
+	if (GetAsyncKeyState('R')) _camera1->Pitch(-_camMoveSpeed * deltaTime);
+	else if (GetAsyncKeyState('F')) _camera1->Pitch(_camMoveSpeed * deltaTime);
 
 	// ================= Camera Selection ================= //
 

@@ -227,10 +227,9 @@ void ApplicationGraphics::UpdateConstantBufferVariables(XMFLOAT4X4& position)
 	cb.PointLight = _pointLight;
 	cb.PointLight.Position = _pointLight.Position;
 
-	if (GetAsyncKeyState('Z'))
-	{
-		cb.SpotLight = _spotLight;
-	}
+	
+	cb.SpotLight = _spotLight;
+	
 	
 
 	_pImmediateContext->UpdateSubresource(_pConstantBuffer, 0, nullptr, &cb, 0, 0);

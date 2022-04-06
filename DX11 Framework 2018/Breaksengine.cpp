@@ -22,11 +22,15 @@ void BreaksEngine::Update(float elapsed)
 	core->Update(elapsed);
 }
 
-void BreaksEngine::SetEarPos(Vector3 pos, bool isRelative)
+void BreaksEngine::SetEarPos(Vector3 pos, bool isRelative, Vector3 forward, Vector3 up)
 {
-	core->SetEarPos(pos, isRelative);
+	core->SetEarPos(pos, isRelative, forward, up);
+	
 }
 
+void BreaksEngine::GetOcclusion(FMOD_VECTOR* listenerPos, FMOD_VECTOR* sourcePos, float directOcclusion, float reverbOcclusion) {
+	core->system->getGeometryOcclusion(listenerPos, sourcePos, &directOcclusion, &reverbOcclusion);
+}
 // ====== Shut down the Engine ====== //
 void BreaksEngine::ShutDown()
 {
@@ -88,12 +92,26 @@ bool BreaksEngine::CheckLoaded(int soundID)
 	return core->CheckLoaded(soundID);
 }
 
+// =============================== Channel Settings =============================== //
 void BreaksEngine::SetBreaksChannelVolume(int channelID, float volume)
 {
 	auto exists = core->channelMap.find(channelID);
 	if (exists != core->channelMap.end()) {
 		exists->second->volume = volume;
 		exists->second->channel->setVolume(volume);
+	}
+}
+
+void BreaksEngine::SetSoundDirection(int channelID, Vector3 direction, Vector3 coneSettings) {
+
+	FMOD_VECTOR coneDirection = { direction.x, direction.y, direction.z };
+	FMOD_VECTOR settings = { coneSettings.x, coneSettings.y, coneSettings.z };
+
+	auto exists = core->channelMap.find(channelID);
+	if (exists != core->channelMap.end()) {
+		exists->second->channel->set3DConeOrientation(&coneDirection);
+											//inside angle, outside angle, outsidevolume
+		exists->second->channel->set3DConeSettings(settings.x, settings.y, settings.z);
 	}
 }
 
@@ -137,4 +155,21 @@ void BreaksEngine::DeVirtualiseBreaksChannel(int channelID)
 	if (exists != core->channelMap.end()); {
 		exists->second->virtualFlag = true;
 	}
+
+	
+}
+
+FMOD::Reverb3D* BreaksEngine::CreateReverb(Vector3 position, FMOD_REVERB_PROPERTIES properties) {
+	FMOD_VECTOR pos = { position.x, position.y, position.z };
+
+	FMOD::Reverb3D* reverb;
+	core->system->createReverb3D(&reverb);
+	reverb->setProperties(&properties);
+	reverb->set3DAttributes(&pos, 30.0f, 150.0f);
+	return reverb;
+}
+
+void BreaksEngine::CreateFmodGeometry(FMOD::Geometry* geometry, int maxPoligons, int maxVertices)
+{
+	core->system->createGeometry(maxPoligons, maxVertices, &geometry);
 }

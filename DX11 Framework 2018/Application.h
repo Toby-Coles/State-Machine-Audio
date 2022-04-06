@@ -59,12 +59,20 @@ private:
 	SceneObject* _shipPlayer;
 	SceneObject* _warehouse;
 	SceneObject* _speaker;
+	SceneObject* _speaker2;
+	Vector3 brasilPos;
 
+	FMOD::Geometry *wallGeometry = 0;
+	
+
+	FMOD::Reverb3D* hallReverbZone;
 	UserInterface _ui;
 
 	Camera* _camera1;
 	Camera* _camera2;
 	Camera* _camera3;
+
+	float _camMoveSpeed = 5.0f;
 private:
 	
 	bool _isWireFrame = false;
