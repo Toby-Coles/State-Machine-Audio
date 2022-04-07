@@ -161,7 +161,7 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	
 	FMOD_VECTOR worldPos = { 25.0f, -5.0f, -10.0f };
 	wallGeometry->setPosition(&worldPos);
-	FMOD_VECTOR occlusionRotate = { 0, 0, 1 }; // rotation object geometry
+	FMOD_VECTOR occlusionRotate = { 0, 0, -1 }; // rotation object geometry
 	FMOD_VECTOR occlusionUp = { 0, 1, 0 };
 
 	wallGeometry->setRotation(&occlusionRotate, &occlusionUp);
