@@ -40,6 +40,9 @@ public:
 	SoundMap sounds;
 	SoundDataMap soundDataMap;
 	BreaksChannelMap channelMap;
+
+private:
+
 };
 
 
