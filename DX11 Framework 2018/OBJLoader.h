@@ -6,6 +6,9 @@
 #include <vector>		//For storing the XMFLOAT3/2 variables
 #include <map>	
 #include "Structures.h"//For fast searching when re-creating the index buffer
+//#include "fmod.h"
+//#include <fmod.hpp>
+#include "BreaksEngine.h"
 
 using namespace DirectX;
 
@@ -16,6 +19,9 @@ struct MeshData
 	UINT VBStride;
 	UINT VBOffset;
 	UINT IndexCount;
+
+	std::vector<XMFLOAT3> fmodVerts;
+	FMOD::Geometry* fmodGeometry = 0;
 };
 
 //struct SimpleVertex
@@ -33,7 +39,7 @@ struct MeshData
 namespace OBJLoader
 {
 	//The only method you'll need to call
-	MeshData Load(char* filename, ID3D11Device* _pd3dDevice, bool invertTexCoords = true);
+	MeshData* Load(char* filename, ID3D11Device* _pd3dDevice, BreaksEngine* audioEngine, bool invertTexCoords = true);
 
 	//Helper methods for the above method
 	//Searhes to see if a similar vertex already exists in the buffer -- if true, we re-use that index

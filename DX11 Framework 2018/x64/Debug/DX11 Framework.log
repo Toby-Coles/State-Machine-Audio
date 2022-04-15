@@ -1,102 +1,18 @@
 ﻿  Application.cpp
 G:\FYP\FYP-Artifact-\DX11 Framework 2018\CubeObject.h(8,34): warning C4100: 'graphics': unreferenced formal parameter
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\Application.cpp(159,15): warning C4189: 'result': local variable is initialized but not referenced
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\Application.cpp(568,14): warning C4129: '=': unrecognized character escape sequence
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\Application.cpp(577,14): warning C4129: '=': unrecognized character escape sequence
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\Application.cpp(583,14): warning C4129: '=': unrecognized character escape sequence
-  ApplicationGraphics.cpp
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\ApplicationGraphics.cpp(128,9): warning C4551: function call missing argument list
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\ApplicationGraphics.cpp(133,9): warning C4551: function call missing argument list
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\ApplicationGraphics.cpp(202): warning C4238: nonstandard extension used: class rvalue used as lvalue
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\ApplicationGraphics.cpp(203): warning C4238: nonstandard extension used: class rvalue used as lvalue
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\ApplicationGraphics.cpp(202,62): warning C4238: nonstandard extension used: class rvalue used as lvalue
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\ApplicationGraphics.cpp(203,74): warning C4238: nonstandard extension used: class rvalue used as lvalue
-  BreaksChannel.cpp
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.h(11,20): warning C4099: 'BreaksChannel': type name first seen using 'struct' now seen using 'class'
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksChannel.h(23): message : see declaration of 'BreaksChannel'
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksChannel.cpp(232,59): warning C4100: 'deltaTime': unreferenced formal parameter
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksChannel.cpp(232,39): warning C4100: 'allowOneShot': unreferenced formal parameter
-  BreaksCore.cpp
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.h(38,60): warning C4099: 'BreaksChannel': type name first seen using 'class' now seen using 'struct'
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.h(11): message : see declaration of 'BreaksChannel'
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksChannel.h(23,22): warning C4099: 'BreaksChannel': type name first seen using 'class' now seen using 'struct'
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksChannel.h(23): message : see declaration of 'BreaksChannel'
-  BreaksCore.h
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.h(38,60): warning C4099: 'BreaksChannel': type name first seen using 'class' now seen using 'struct'
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.h(11): message : see declaration of 'BreaksChannel'
-  Breaksengine.cpp
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.h(38,60): warning C4099: 'BreaksChannel': type name first seen using 'class' now seen using 'struct'
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksCore.h(11): message : see declaration of 'BreaksChannel'
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksChannel.h(23,22): warning C4099: 'BreaksChannel': type name first seen using 'class' now seen using 'struct'
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\BreaksChannel.h(23): message : see declaration of 'BreaksChannel'
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\Breaksengine.cpp(147,39): warning C4390: ';': empty controlled statement found; is this the intent?
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\Breaksengine.cpp(155,39): warning C4390: ';': empty controlled statement found; is this the intent?
-  Camera.cpp
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\Camera.cpp(79,14): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-  DDSTextureLoader.cpp
-  DX11 Framework.cpp
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\CubeObject.h(8,34): warning C4100: 'graphics': unreferenced formal parameter
-  GroundPlane.cpp
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\GroundPlane.cpp(35,64): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\GroundPlane.cpp(58,27): warning C4244: '=': conversion from 'UINT' to '_Ty', possible loss of data
-          with
-          [
-              _Ty=unsigned short
-          ]
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\GroundPlane.cpp(59,35): warning C4244: '=': conversion from 'UINT' to '_Ty', possible loss of data
-          with
-          [
-              _Ty=unsigned short
-          ]
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\GroundPlane.cpp(60,37): warning C4244: '=': conversion from 'UINT' to '_Ty', possible loss of data
-          with
-          [
-              _Ty=unsigned short
-          ]
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\GroundPlane.cpp(62,37): warning C4244: '=': conversion from 'UINT' to '_Ty', possible loss of data
-          with
-          [
-              _Ty=unsigned short
-          ]
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\GroundPlane.cpp(63,35): warning C4244: '=': conversion from 'UINT' to '_Ty', possible loss of data
-          with
-          [
-              _Ty=unsigned short
-          ]
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\GroundPlane.cpp(64,41): warning C4244: '=': conversion from 'UINT' to '_Ty', possible loss of data
-          with
-          [
-              _Ty=unsigned short
-          ]
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\GroundPlane.cpp(72,33): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\GroundPlane.cpp(74,55): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\GroundPlane.cpp(15,8): warning C4189: 'du': local variable is initialized but not referenced
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\GroundPlane.cpp(16,8): warning C4189: 'dv': local variable is initialized but not referenced
-  imgui.cpp
-  imgui_demo.cpp
-  imgui_draw.cpp
-  imgui_impl_dx11.cpp
-  imgui_impl_win32.cpp
-  imgui_tables.cpp
-  imgui_widgets.cpp
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\Application.cpp(412,14): warning C4129: '=': unrecognized character escape sequence
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\Application.cpp(421,14): warning C4129: '=': unrecognized character escape sequence
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\Application.cpp(427,14): warning C4129: '=': unrecognized character escape sequence
   OBJLoader.cpp
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(32,37): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(145,34): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(146,51): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(174,48): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(198,54): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(213,61): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(228,52): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(246,52): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(254,44): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
-  SceneObject.cpp
-  SetUpGUI.cpp
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(34,37): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(147,34): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(148,51): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(176,48): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(200,54): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(215,61): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(230,52): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(248,52): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(256,45): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+G:\FYP\FYP-Artifact-\DX11 Framework 2018\OBJLoader.cpp(269,98): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   Generating Code...
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\ApplicationGraphics.cpp(292): warning C4715: 'ApplicationGraphics::UpdateWireFrame': not all control paths return a value
-  Compiling...
-  Time.cpp
-G:\FYP\FYP-Artifact-\DX11 Framework 2018\Time.cpp(38,14): warning C4244: '=': conversion from 'double' to '__int64', possible loss of data
-  Vector3.h
-  Generating Code...
-x64\Debug\BreaksCore.obj : warning LNK4042: object specified more than once; extras ignored
   DX11 Framework.vcxproj -> G:\FYP\FYP-Artifact-\DX11 Framework 2018\x64\Debug\DX11 Framework.exe

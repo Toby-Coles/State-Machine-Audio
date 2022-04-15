@@ -34,7 +34,9 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	
 	//Create and set variables for the camera object and set the current active camera in the program
 	_camera1 = new Camera();
-	   
+
+	audioEngine = new BreaksEngine();
+	audioEngine->Initialize();
 
 	_camera1->SetCameraPosition(XMFLOAT3(0.0f, -3.0f, 15.5f));
 	_camera1->LookAt(_camera1->GetCameraPosition(), XMFLOAT3(0.0f, 0.0f, 0.0f), _camera1->GetCameraUp());
@@ -44,7 +46,7 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 
 	//Create the object for the crate cube in the scene 
 	_cube = new SceneObject(appGFX);
-	_cube->LoadModelMesh("Models/cube.obj", appGFX->GetDevice());
+	_cube->LoadModelMesh("Models/cube.obj", appGFX->GetDevice(), audioEngine);
 	_cube->SetPosition(XMFLOAT3(15.3f, 0.2f, 0.1f));
 	_cube->SetScale(XMFLOAT3(1.0f, 1.0f, 1.0f));
 	_cube->SetRotation(XMFLOAT3(0.1f, 0.1f, 0.1f));
@@ -63,14 +65,14 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	//_worldSceneObjects.push_back(_earth);
 
 	_ship = new SceneObject(appGFX);
-	_ship->LoadModelMesh("Models/userModel.obj", appGFX->GetDevice());
+	_ship->LoadModelMesh("Models/userModel.obj", appGFX->GetDevice(), audioEngine);
 	_ship->SetPosition(XMFLOAT3(0.0f, 0.0f, - 25.0f));
 	_ship->SetScale(XMFLOAT3(0.3f, 0.3f, 0.3f));
 	_ship->GenerateTexture(L"Textures/shipTex.dss", appGFX->GetDevice());
 	_worldSceneObjects.push_back(_ship);
 
 	_shipPlayer = new SceneObject(appGFX);
-	_shipPlayer->LoadModelMesh("Models/userModelRotated.obj", appGFX->GetDevice());
+	_shipPlayer->LoadModelMesh("Models/userModelRotated.obj", appGFX->GetDevice(),audioEngine);
 	_shipPlayer->SetPosition(XMFLOAT3(0.0f, 0.0f, 40.0f));
 	_shipPlayer->SetScale(XMFLOAT3(0.3f, 0.3f, 0.3f));
 	_shipPlayer->GenerateTexture(L"Textures/shipTex.dss", appGFX->GetDevice());
@@ -97,7 +99,7 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	
 	//Create the object and initialise the variables for the skybox(skysphere)
 	_skyMap = new SceneObject(appGFX);
-	_skyMap->LoadModelMesh("Models/sphere2.obj", appGFX->GetDevice());
+	_skyMap->LoadModelMesh("Models/sphere2.obj", appGFX->GetDevice(), audioEngine);
 	_skyMap->SetPosition(XMFLOAT3(0.0f, 0.0f, 5.5f));
 	_skyMap->SetScale(XMFLOAT3(100.0f, 100.0f, 100.0f));
 	_skyMap->SetRotation(XMFLOAT3(0.0f, 0.0f, 0.0f));
@@ -111,21 +113,21 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	_showGridPlane = true;
 
 	_warehouse = new SceneObject(appGFX);
-	_warehouse->LoadModelMesh("Models/testscene.obj", appGFX->GetDevice());
+	_warehouse->LoadModelMesh("Models/testscene.obj", appGFX->GetDevice(), audioEngine);
 	_warehouse->SetPosition(XMFLOAT3(0.0f, -5.0f, 0.0f));
 	_warehouse->SetScale(XMFLOAT3(0.8f,0.8f,0.8f));
 	_warehouse->GenerateTexture(L"Textures/planeSurface.dds", appGFX->GetDevice());
 	_worldSceneObjects.push_back(_warehouse);
 	
 	_speaker = new SceneObject(appGFX);
-	_speaker->LoadModelMesh("Models/SpeakerSoloTri.obj", appGFX->GetDevice());
+	_speaker->LoadModelMesh("Models/SpeakerSoloTri.obj", appGFX->GetDevice(), audioEngine);
 	_speaker->SetPosition(XMFLOAT3(25.0f, -5.1f, -20.0f));
 	_speaker->SetScale(XMFLOAT3(1.2f, 1.2f, 1.2f));
 	_speaker->GenerateTexture(L"Textures/white.dds", appGFX->GetDevice());
 	_worldSceneObjects.push_back(_speaker);
 	
 	_speaker2 = new SceneObject(appGFX);
-	_speaker2->LoadModelMesh("Models/SpeakerSoloTri.obj", appGFX->GetDevice());
+	_speaker2->LoadModelMesh("Models/SpeakerSoloTri.obj", appGFX->GetDevice(), audioEngine);
 	_speaker2->SetPosition(XMFLOAT3(25.0f, -5.1f, -30.0f));
 	_speaker2->SetScale(XMFLOAT3(1.2f, 1.2f, 1.2f));
 	_speaker2->GenerateTexture(L"Textures/white.dds", appGFX->GetDevice());
@@ -140,32 +142,34 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 
 
 	
-	audioEngine->Initialize();
+	
 
 	hallReverbZone = audioEngine->CreateReverb(Vector3{ -70.0f, -5.1f, -30.0f }, FMOD_PRESET_ALLEY);
 	_currentAudioID = 1;
 	
 
-	audioEngine->CreateFmodGeometry(wallGeometry, 200, 1200);
+	//audioEngine->CreateFmodGeometry(wallGeometry, 200, 1200);
 	/*FMOD_VECTOR vertices[3];
 	vertices[0] = { 0.0f, 0.0f, 0.0f };
 	vertices[1] = { 0.0f, 1.0f, 0.0f };
 	vertices[2] = { 0.0f, 0.0f, 1.0f };*/
 
-	FMOD_VECTOR rectangle[4] = {{ -100, -100, 0}, { -100, 100, 0}, { 100,100, 0}, { 10, -100, 0} };
-
-	int index = 0;
+	//FMOD_VECTOR rectangle[4] = {{ -100, -100, 0}, { -100, 100, 0}, { 100,100, 0}, { 10, -100, 0} };
+	//FMOD_VECTOR* verts = new FMOD_VECTOR[_warehouse->mMeshData->fmodVerts.size()];
+	//verts = _warehouse->mMeshData.fmodVerts;
+	//int index = 0;
 	
-	FMOD_RESULT  result = wallGeometry->addPolygon(1.0f, 1.0f, true, 4, rectangle, &index);
+	//FMOD_RESULT  result = wallGeometry->addPolygon(1.0f, 1.0f, true, 4, rectangle, &index);
 		
 	
-	FMOD_VECTOR worldPos = { 25.0f, -5.0f, -10.0f };
-	wallGeometry->setPosition(&worldPos);
+	//FMOD_VECTOR worldPos = { 25.0f, -5.0f, -10.0f };
+	//wallGeometry->setPosition(&worldPos);
+
 	FMOD_VECTOR occlusionRotate = { 0, 0, -1 }; // rotation object geometry
 	FMOD_VECTOR occlusionUp = { 0, 1, 0 };
 
-	wallGeometry->setRotation(&occlusionRotate, &occlusionUp);
-	wallGeometry->setActive(true);
+	////wallGeometry->setRotation(&occlusionRotate, &occlusionUp);
+	//wallGeometry->setActive(true);
 
 	SoundData backgroundMusic;
 	backgroundMusic.fileName = ("Resources/TestSong.wav");
@@ -183,6 +187,18 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	audioEngine->RegisterSound(backgroundMusic, true); //ID 0
 	
 
+	for (int i = 0; i < _worldSceneObjects.size(); i++) {
+		FMOD::Geometry* g = _worldSceneObjects[i]->mMeshData->fmodGeometry;
+		FMOD_VECTOR v = { _worldSceneObjects[i]->GetPosition().x,_worldSceneObjects[i]->GetPosition().y,_worldSceneObjects[i]->GetPosition().z };
+		FMOD_VECTOR s = { _worldSceneObjects[i]->GetScale().x,_worldSceneObjects[i]->GetScale().y ,_worldSceneObjects[i]->GetScale().z };
+		FMOD_VECTOR r = { _worldSceneObjects[i]->GetRotation().x,_worldSceneObjects[i]->GetRotation().y,_worldSceneObjects[i]->GetRotation().z };
+
+		g->setPosition(&v);
+		g->setScale(&s);
+		g->setRotation(&r, new FMOD_VECTOR{ 0.0f,1.0f,0.0f });
+		g->setActive(true);
+	}
+
 	//Set rotation values
 	_rotation = 0.0f;
 	_rotationSpeed = 0.5f;
@@ -192,179 +208,7 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 }
 
 
-HRESULT Application::InitVertexBuffer()
-{
-	//GenerateGridPlain(3.0f, 3.0f, 6, 4);
 
-	//Hard coded vertex buffer for a cube - NOT IMPLEMENTED INTO SCENE HERE TO DEMONSTRATE UNDERSTANDING AND ABILITY
-	HRESULT hrCube;
-	SimpleVertex verticesCube[] = {
-	
-		{ XMFLOAT3(-1.0,  1.0, -1.0),		XMFLOAT3(0.0,  0.0, -1.0),		XMFLOAT2(0.0, 0.0) },	//Top Back Left
-		{ XMFLOAT3(1.0,  1.0, -1.0),		XMFLOAT3(0.0,  0.0, -1.0),		XMFLOAT2(1.0, 0.0) },  	//Top Back Right
-		{ XMFLOAT3(-1.0, -1.0, -1.0),		XMFLOAT3(0.0,  0.0, -1.0),		XMFLOAT2(0.0, 1.0) },  	//Bottom Back Left
-		{ XMFLOAT3(-1.0, -1.0, -1.0),		XMFLOAT3(0.0,  0.0, -1.0),		XMFLOAT2(0.0, 1.0) },  	//Bottom Back Left
-		{ XMFLOAT3(1.0,  1.0, -1.0),		XMFLOAT3(0.0,  0.0, -1.0),		XMFLOAT2(1.0, 0.0) },  	//Top Back Right
-		{ XMFLOAT3(1.0, -1.0, -1.0),		XMFLOAT3(0.0,  0.0, -1.0),		XMFLOAT2(1.0, 1.0) },  	//Bottom Back Left
-		{ XMFLOAT3(1.0,  1.0, -1.0),		XMFLOAT3(1.0,  0.0,  0.0),		XMFLOAT2(0.0, 0.0) }, 	//Top Back Right
-		{ XMFLOAT3(1.0,  1.0,  1.0),		XMFLOAT3(1.0,  0.0,  0.0),		XMFLOAT2(1.0, 0.0) },  	//Top Front Right
-		{ XMFLOAT3(1.0, -1.0, -1.0),		XMFLOAT3(1.0,  0.0,  0.0),		XMFLOAT2(0.0, 1.0) },  	//Bottom Back Right
-		{ XMFLOAT3(1.0, -1.0, -1.0),		XMFLOAT3(1.0,  0.0,  0.0),		XMFLOAT2(0.0, 1.0) },  	//Top Back Right
-		{ XMFLOAT3(1.0,  1.0,  1.0),		XMFLOAT3(1.0,  0.0,  0.0),		XMFLOAT2(1.0, 0.0) },  	//Top Front Right
-		{ XMFLOAT3(1.0, -1.0,  1.0),		XMFLOAT3(1.0,  0.0,  0.0),		XMFLOAT2(1.0, 1.0) },  	//Bottom Front Right
-		{ XMFLOAT3(1.0,  1.0,  1.0),		XMFLOAT3(0.0,  0.0,  1.0),		XMFLOAT2(0.0, 0.0) },  	//Top Front Right
-		{ XMFLOAT3(-1.0,  1.0,  1.0),		XMFLOAT3(0.0,  0.0,  1.0),		XMFLOAT2(1.0, 0.0) },  	//Top Front Left
-		{ XMFLOAT3(1.0, -1.0,  1.0),		XMFLOAT3(0.0,  0.0,  1.0),		XMFLOAT2(0.0, 1.0) },  	//Bottom Front Right
-		{ XMFLOAT3(1.0, -1.0,  1.0),		XMFLOAT3(0.0,  0.0,  1.0),		XMFLOAT2(0.0, 1.0) },  	//Bottom Front Right
-		{ XMFLOAT3(-1.0,  1.0,  1.0),		XMFLOAT3(0.0,  0.0,  1.0),		XMFLOAT2(1.0, 0.0) },  	//Top Front Left
-		{ XMFLOAT3(-1.0, -1.0,  1.0),		XMFLOAT3(0.0,  0.0,  1.0),		XMFLOAT2(1.0, 1.0) },  	//Bottom Front Left
-		{ XMFLOAT3(-1.0,  1.0,  1.0),		XMFLOAT3(-1.0,  0.0,  0.0),		XMFLOAT2(0.0, 0.0) }, 	//Top Front Left
-		{ XMFLOAT3(-1.0,  1.0, -1.0),		XMFLOAT3(-1.0,  0.0,  0.0),		XMFLOAT2(1.0, 0.0) }, 	//Top Back Left
-		{ XMFLOAT3(-1.0, -1.0,  1.0),		XMFLOAT3(-1.0,  0.0,  0.0),		XMFLOAT2(0.0, 1.0) }, 	//Bottom Front Left
-		{ XMFLOAT3(-1.0, -1.0,  1.0),		XMFLOAT3(-1.0,  0.0,  0.0),		XMFLOAT2(0.0, 1.0) }, 	//Bottom Front Left
-		{ XMFLOAT3(-1.0,  1.0, -1.0),		XMFLOAT3(-1.0,  0.0,  0.0),		XMFLOAT2(1.0, 0.0) }, 	//Top Back Left
-		{ XMFLOAT3(-1.0, -1.0, -1.0),		XMFLOAT3(-1.0,  0.0,  0.0),		XMFLOAT2(1.0, 1.0) }, 	//Bottom Back Left
-		{ XMFLOAT3(-1.0,  1.0,  1.0),		XMFLOAT3(0.0,  1.0,  0.0),		XMFLOAT2(0.0, 0.0) }, 	//Top Front Left
-		{ XMFLOAT3(1.0,  1.0,  1.0),		XMFLOAT3(0.0,  1.0,  0.0),		XMFLOAT2(1.0, 0.0) },  	//Top Front Right
-		{ XMFLOAT3(-1.0,  1.0, -1.0),		XMFLOAT3(0.0,  1.0,  0.0),		XMFLOAT2(0.0, 1.0) },  	//Top Back Left
-		{ XMFLOAT3(-1.0,  1.0, -1.0),		XMFLOAT3(0.0,  1.0,  0.0),		XMFLOAT2(0.0, 1.0) },  	//Top Back Left
-		{ XMFLOAT3(1.0,  1.0,  1.0),		XMFLOAT3(0.0,  1.0,  0.0),		XMFLOAT2(1.0, 0.0) },  	//Top Front Right
-		{ XMFLOAT3(1.0,  1.0, -1.0),		XMFLOAT3(0.0,  1.0,  0.0),		XMFLOAT2(1.0, 1.0) },  	//Top Back Left
-		{ XMFLOAT3(-1.0, -1.0, -1.0),		XMFLOAT3(0.0, -1.0,  0.0),		XMFLOAT2(0.0, 0.0) },  	//Bottom Back Left
-		{ XMFLOAT3(1.0, -1.0, -1.0),		XMFLOAT3(0.0, -1.0,  0.0),		XMFLOAT2(1.0, 0.0) },  	//Bottom Back Right
-		{ XMFLOAT3(-1.0, -1.0,  1.0),		XMFLOAT3(0.0, -1.0,  0.0),		XMFLOAT2(0.0, 1.0) },  	//Bottom Front Left
-		{ XMFLOAT3(-1.0, -1.0,  1.0),		XMFLOAT3(0.0, -1.0,  0.0),		XMFLOAT2(0.0, 1.0) },  	//Bottom Front Left
-		{ XMFLOAT3(1.0, -1.0, -1.0),		XMFLOAT3(0.0, -1.0,  0.0),		XMFLOAT2(1.0, 0.0) },  	//Bottom Back Right
-		{ XMFLOAT3(1.0, -1.0,  1.0),		XMFLOAT3(0.0, -1.0,  0.0),		XMFLOAT2(1.0, 1.0) },	//Bottom Front Right
-
-
-	};
-
-	//Create the buffer for the cube
-	D3D11_BUFFER_DESC bdCube;
-	ZeroMemory(&bdCube, sizeof(bdCube));
-	bdCube.Usage = D3D11_USAGE_DEFAULT;
-	bdCube.ByteWidth = sizeof(verticesCube);
-	bdCube.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-	bdCube.CPUAccessFlags = 0;
-
-	D3D11_SUBRESOURCE_DATA InitDataC;
-	ZeroMemory(&InitDataC, sizeof(InitDataC));
-	InitDataC.pSysMem = verticesCube;
-
-	hrCube = appGFX->GetDevice()->CreateBuffer(&bdCube, &InitDataC, &_pVertexBufferCube);
-
-	if (FAILED(hrCube))
-		return hrCube;
-
-	//Create vertex buffer for pyramid
-	HRESULT hrPyramid;
-	SimpleVertex verticesPyramid[]{
-		//Base
-		{XMFLOAT3(-1.0f, 0.0f, -1.0f), XMFLOAT3(-1.0f, 0.0f, -1.0f)},
-		{XMFLOAT3(1.0f, -1.0f, 1.0f), XMFLOAT3(1.0f, -1.0f, 1.0f)},
-		{XMFLOAT3(1.0f,-1.0f,1.0f)	, XMFLOAT3(1.0f,-1.0f,1.0f)},
-		{XMFLOAT3(1.0f,-1.0f,-1.0f)	, XMFLOAT3(1.0f,-1.0f,-1.0f)},
-
-		//Point
-		{XMFLOAT3(0.0f,1.0f,0.0f) ,XMFLOAT3(0.0f,1.0f,0.0f) },
-
-	};
-
-	D3D11_BUFFER_DESC bdPyramid;
-	ZeroMemory(&bdPyramid, sizeof(bdPyramid));
-	bdPyramid.Usage = D3D11_USAGE_DEFAULT;
-	bdPyramid.ByteWidth = sizeof(verticesPyramid);
-	bdPyramid.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-	bdPyramid.CPUAccessFlags = 0;
-
-	D3D11_SUBRESOURCE_DATA InitDataP;
-	ZeroMemory(&InitDataP, sizeof(InitDataP));
-	InitDataP.pSysMem = verticesPyramid;
-
-	hrPyramid = appGFX->GetDevice()->CreateBuffer(&bdPyramid, &InitDataP, &_pVertexBufferPyramid);
-
-	if (FAILED(hrPyramid))
-		return hrPyramid;
-
-
-
-
-	return S_OK;
-}
-
-
-HRESULT Application::InitIndexBuffer()
-{
-	//Hard coded index buffers - NOT IMPLEMENTED INTO SCENE HERE TO DEMONSTRATE UNDERSTANDING AND ABILITY
-	HRESULT hrCube;
-
-	// Create index buffer for Cube
-	WORD indicesCube[] =
-	{
-		0,1,2 ,3,4,5,
-		6,7,8 ,9,10,11,
-		12,13,14 ,15,16,17,
-		18,19,20 ,21,22,23,
-		24,25,26 ,27,28,29,
-		30,31,32 ,33,34,35
-	};
-
-	D3D11_BUFFER_DESC bdCube;
-	ZeroMemory(&bdCube, sizeof(bdCube));
-
-	bdCube.Usage = D3D11_USAGE_DEFAULT;
-	bdCube.ByteWidth = sizeof(indicesCube);
-	bdCube.BindFlags = D3D11_BIND_INDEX_BUFFER;
-	bdCube.CPUAccessFlags = 0;
-
-	D3D11_SUBRESOURCE_DATA InitData;
-	ZeroMemory(&InitData, sizeof(InitData));
-	InitData.pSysMem = indicesCube;
-	hrCube = appGFX->GetDevice()->CreateBuffer(&bdCube, &InitData, &_pIndexBufferCube);
-
-	HRESULT hrPyramid;
-
-	//Create index buffer for Pyramid
-	WORD indicesPyramid[]{
-		0, 2, 1,
-		1, 2, 3,
-		0, 1, 4,
-		1, 3, 4,
-		3, 2, 4,
-		2, 0, 4,
-	};
-
-	D3D11_BUFFER_DESC bdPyramid;
-	ZeroMemory(&bdPyramid, sizeof(bdPyramid));
-
-	bdPyramid.Usage = D3D11_USAGE_DEFAULT;
-	bdPyramid.ByteWidth = sizeof(indicesPyramid);
-	bdPyramid.BindFlags = D3D11_BIND_INDEX_BUFFER;
-	bdPyramid.CPUAccessFlags = 0;
-
-	D3D11_SUBRESOURCE_DATA InitDataP;
-	ZeroMemory(&InitDataP, sizeof(InitDataP));
-	InitDataP.pSysMem = indicesPyramid;
-	hrPyramid = appGFX->GetDevice()->CreateBuffer(&bdPyramid, &InitDataP, &_pIndexBufferPyramid);
-
-	if (FAILED(hrPyramid))
-		return hrPyramid;
-
-	return S_OK;
-}
-
-void Application::Cleanup()
-{
-	//Cleanup memory
-	if (_pVertexBufferCube) _pVertexBufferCube->Release();
-	if (_pIndexBufferCube) _pIndexBufferCube->Release();
-	if (_pVertexBufferCube) _pVertexBufferPyramid->Release();
-	if (_pIndexBufferCube) _pIndexBufferPyramid->Release();
-	if (p_TextureRV) p_TextureRV->Release();
-	if (p_SpecularTexture) p_SpecularTexture->Release();
-	
-}
 
 void Application::Update()
 {
@@ -383,7 +227,7 @@ void Application::Update()
 	audioEngine->Update(deltaTime);
 	FMOD_VECTOR listenerPos = { _camera1->GetCameraVectorPos().x,_camera1->GetCameraVectorPos().y, _camera1->GetCameraVectorPos().z };
 	FMOD_VECTOR brasilVector = { brasilPos.x, brasilPos.y, brasilPos.z };
-	audioEngine->GetOcclusion(&listenerPos, &brasilVector, 0.9f, 0.9f);
+	audioEngine->GetOcclusion(&listenerPos, &brasilVector, 1.0f, 1.0f);
 	
 	//Sets the EyePosw for rendering to that of the active camera
 	appGFX->SetEyePosW(appGFX->GetCurrentCamera()->GetCameraPosition());
@@ -639,4 +483,178 @@ void Application::Draw()
 
 
 	
+}
+
+HRESULT Application::InitVertexBuffer()
+{
+	//GenerateGridPlain(3.0f, 3.0f, 6, 4);
+
+	//Hard coded vertex buffer for a cube - NOT IMPLEMENTED INTO SCENE HERE TO DEMONSTRATE UNDERSTANDING AND ABILITY
+	HRESULT hrCube;
+	SimpleVertex verticesCube[] = {
+
+		{ XMFLOAT3(-1.0,  1.0, -1.0),		XMFLOAT3(0.0,  0.0, -1.0),		XMFLOAT2(0.0, 0.0) },	//Top Back Left
+		{ XMFLOAT3(1.0,  1.0, -1.0),		XMFLOAT3(0.0,  0.0, -1.0),		XMFLOAT2(1.0, 0.0) },  	//Top Back Right
+		{ XMFLOAT3(-1.0, -1.0, -1.0),		XMFLOAT3(0.0,  0.0, -1.0),		XMFLOAT2(0.0, 1.0) },  	//Bottom Back Left
+		{ XMFLOAT3(-1.0, -1.0, -1.0),		XMFLOAT3(0.0,  0.0, -1.0),		XMFLOAT2(0.0, 1.0) },  	//Bottom Back Left
+		{ XMFLOAT3(1.0,  1.0, -1.0),		XMFLOAT3(0.0,  0.0, -1.0),		XMFLOAT2(1.0, 0.0) },  	//Top Back Right
+		{ XMFLOAT3(1.0, -1.0, -1.0),		XMFLOAT3(0.0,  0.0, -1.0),		XMFLOAT2(1.0, 1.0) },  	//Bottom Back Left
+		{ XMFLOAT3(1.0,  1.0, -1.0),		XMFLOAT3(1.0,  0.0,  0.0),		XMFLOAT2(0.0, 0.0) }, 	//Top Back Right
+		{ XMFLOAT3(1.0,  1.0,  1.0),		XMFLOAT3(1.0,  0.0,  0.0),		XMFLOAT2(1.0, 0.0) },  	//Top Front Right
+		{ XMFLOAT3(1.0, -1.0, -1.0),		XMFLOAT3(1.0,  0.0,  0.0),		XMFLOAT2(0.0, 1.0) },  	//Bottom Back Right
+		{ XMFLOAT3(1.0, -1.0, -1.0),		XMFLOAT3(1.0,  0.0,  0.0),		XMFLOAT2(0.0, 1.0) },  	//Top Back Right
+		{ XMFLOAT3(1.0,  1.0,  1.0),		XMFLOAT3(1.0,  0.0,  0.0),		XMFLOAT2(1.0, 0.0) },  	//Top Front Right
+		{ XMFLOAT3(1.0, -1.0,  1.0),		XMFLOAT3(1.0,  0.0,  0.0),		XMFLOAT2(1.0, 1.0) },  	//Bottom Front Right
+		{ XMFLOAT3(1.0,  1.0,  1.0),		XMFLOAT3(0.0,  0.0,  1.0),		XMFLOAT2(0.0, 0.0) },  	//Top Front Right
+		{ XMFLOAT3(-1.0,  1.0,  1.0),		XMFLOAT3(0.0,  0.0,  1.0),		XMFLOAT2(1.0, 0.0) },  	//Top Front Left
+		{ XMFLOAT3(1.0, -1.0,  1.0),		XMFLOAT3(0.0,  0.0,  1.0),		XMFLOAT2(0.0, 1.0) },  	//Bottom Front Right
+		{ XMFLOAT3(1.0, -1.0,  1.0),		XMFLOAT3(0.0,  0.0,  1.0),		XMFLOAT2(0.0, 1.0) },  	//Bottom Front Right
+		{ XMFLOAT3(-1.0,  1.0,  1.0),		XMFLOAT3(0.0,  0.0,  1.0),		XMFLOAT2(1.0, 0.0) },  	//Top Front Left
+		{ XMFLOAT3(-1.0, -1.0,  1.0),		XMFLOAT3(0.0,  0.0,  1.0),		XMFLOAT2(1.0, 1.0) },  	//Bottom Front Left
+		{ XMFLOAT3(-1.0,  1.0,  1.0),		XMFLOAT3(-1.0,  0.0,  0.0),		XMFLOAT2(0.0, 0.0) }, 	//Top Front Left
+		{ XMFLOAT3(-1.0,  1.0, -1.0),		XMFLOAT3(-1.0,  0.0,  0.0),		XMFLOAT2(1.0, 0.0) }, 	//Top Back Left
+		{ XMFLOAT3(-1.0, -1.0,  1.0),		XMFLOAT3(-1.0,  0.0,  0.0),		XMFLOAT2(0.0, 1.0) }, 	//Bottom Front Left
+		{ XMFLOAT3(-1.0, -1.0,  1.0),		XMFLOAT3(-1.0,  0.0,  0.0),		XMFLOAT2(0.0, 1.0) }, 	//Bottom Front Left
+		{ XMFLOAT3(-1.0,  1.0, -1.0),		XMFLOAT3(-1.0,  0.0,  0.0),		XMFLOAT2(1.0, 0.0) }, 	//Top Back Left
+		{ XMFLOAT3(-1.0, -1.0, -1.0),		XMFLOAT3(-1.0,  0.0,  0.0),		XMFLOAT2(1.0, 1.0) }, 	//Bottom Back Left
+		{ XMFLOAT3(-1.0,  1.0,  1.0),		XMFLOAT3(0.0,  1.0,  0.0),		XMFLOAT2(0.0, 0.0) }, 	//Top Front Left
+		{ XMFLOAT3(1.0,  1.0,  1.0),		XMFLOAT3(0.0,  1.0,  0.0),		XMFLOAT2(1.0, 0.0) },  	//Top Front Right
+		{ XMFLOAT3(-1.0,  1.0, -1.0),		XMFLOAT3(0.0,  1.0,  0.0),		XMFLOAT2(0.0, 1.0) },  	//Top Back Left
+		{ XMFLOAT3(-1.0,  1.0, -1.0),		XMFLOAT3(0.0,  1.0,  0.0),		XMFLOAT2(0.0, 1.0) },  	//Top Back Left
+		{ XMFLOAT3(1.0,  1.0,  1.0),		XMFLOAT3(0.0,  1.0,  0.0),		XMFLOAT2(1.0, 0.0) },  	//Top Front Right
+		{ XMFLOAT3(1.0,  1.0, -1.0),		XMFLOAT3(0.0,  1.0,  0.0),		XMFLOAT2(1.0, 1.0) },  	//Top Back Left
+		{ XMFLOAT3(-1.0, -1.0, -1.0),		XMFLOAT3(0.0, -1.0,  0.0),		XMFLOAT2(0.0, 0.0) },  	//Bottom Back Left
+		{ XMFLOAT3(1.0, -1.0, -1.0),		XMFLOAT3(0.0, -1.0,  0.0),		XMFLOAT2(1.0, 0.0) },  	//Bottom Back Right
+		{ XMFLOAT3(-1.0, -1.0,  1.0),		XMFLOAT3(0.0, -1.0,  0.0),		XMFLOAT2(0.0, 1.0) },  	//Bottom Front Left
+		{ XMFLOAT3(-1.0, -1.0,  1.0),		XMFLOAT3(0.0, -1.0,  0.0),		XMFLOAT2(0.0, 1.0) },  	//Bottom Front Left
+		{ XMFLOAT3(1.0, -1.0, -1.0),		XMFLOAT3(0.0, -1.0,  0.0),		XMFLOAT2(1.0, 0.0) },  	//Bottom Back Right
+		{ XMFLOAT3(1.0, -1.0,  1.0),		XMFLOAT3(0.0, -1.0,  0.0),		XMFLOAT2(1.0, 1.0) },	//Bottom Front Right
+
+
+	};
+
+	//Create the buffer for the cube
+	D3D11_BUFFER_DESC bdCube;
+	ZeroMemory(&bdCube, sizeof(bdCube));
+	bdCube.Usage = D3D11_USAGE_DEFAULT;
+	bdCube.ByteWidth = sizeof(verticesCube);
+	bdCube.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	bdCube.CPUAccessFlags = 0;
+
+	D3D11_SUBRESOURCE_DATA InitDataC;
+	ZeroMemory(&InitDataC, sizeof(InitDataC));
+	InitDataC.pSysMem = verticesCube;
+
+	hrCube = appGFX->GetDevice()->CreateBuffer(&bdCube, &InitDataC, &_pVertexBufferCube);
+
+	if (FAILED(hrCube))
+		return hrCube;
+
+	//Create vertex buffer for pyramid
+	HRESULT hrPyramid;
+	SimpleVertex verticesPyramid[]{
+		//Base
+		{XMFLOAT3(-1.0f, 0.0f, -1.0f), XMFLOAT3(-1.0f, 0.0f, -1.0f)},
+		{XMFLOAT3(1.0f, -1.0f, 1.0f), XMFLOAT3(1.0f, -1.0f, 1.0f)},
+		{XMFLOAT3(1.0f,-1.0f,1.0f)	, XMFLOAT3(1.0f,-1.0f,1.0f)},
+		{XMFLOAT3(1.0f,-1.0f,-1.0f)	, XMFLOAT3(1.0f,-1.0f,-1.0f)},
+
+		//Point
+		{XMFLOAT3(0.0f,1.0f,0.0f) ,XMFLOAT3(0.0f,1.0f,0.0f) },
+
+	};
+
+	D3D11_BUFFER_DESC bdPyramid;
+	ZeroMemory(&bdPyramid, sizeof(bdPyramid));
+	bdPyramid.Usage = D3D11_USAGE_DEFAULT;
+	bdPyramid.ByteWidth = sizeof(verticesPyramid);
+	bdPyramid.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	bdPyramid.CPUAccessFlags = 0;
+
+	D3D11_SUBRESOURCE_DATA InitDataP;
+	ZeroMemory(&InitDataP, sizeof(InitDataP));
+	InitDataP.pSysMem = verticesPyramid;
+
+	hrPyramid = appGFX->GetDevice()->CreateBuffer(&bdPyramid, &InitDataP, &_pVertexBufferPyramid);
+
+	if (FAILED(hrPyramid))
+		return hrPyramid;
+
+
+
+
+	return S_OK;
+}
+
+
+HRESULT Application::InitIndexBuffer()
+{
+	//Hard coded index buffers - NOT IMPLEMENTED INTO SCENE HERE TO DEMONSTRATE UNDERSTANDING AND ABILITY
+	HRESULT hrCube;
+
+	// Create index buffer for Cube
+	WORD indicesCube[] =
+	{
+		0,1,2 ,3,4,5,
+		6,7,8 ,9,10,11,
+		12,13,14 ,15,16,17,
+		18,19,20 ,21,22,23,
+		24,25,26 ,27,28,29,
+		30,31,32 ,33,34,35
+	};
+
+	D3D11_BUFFER_DESC bdCube;
+	ZeroMemory(&bdCube, sizeof(bdCube));
+
+	bdCube.Usage = D3D11_USAGE_DEFAULT;
+	bdCube.ByteWidth = sizeof(indicesCube);
+	bdCube.BindFlags = D3D11_BIND_INDEX_BUFFER;
+	bdCube.CPUAccessFlags = 0;
+
+	D3D11_SUBRESOURCE_DATA InitData;
+	ZeroMemory(&InitData, sizeof(InitData));
+	InitData.pSysMem = indicesCube;
+	hrCube = appGFX->GetDevice()->CreateBuffer(&bdCube, &InitData, &_pIndexBufferCube);
+
+	HRESULT hrPyramid;
+
+	//Create index buffer for Pyramid
+	WORD indicesPyramid[]{
+		0, 2, 1,
+		1, 2, 3,
+		0, 1, 4,
+		1, 3, 4,
+		3, 2, 4,
+		2, 0, 4,
+	};
+
+	D3D11_BUFFER_DESC bdPyramid;
+	ZeroMemory(&bdPyramid, sizeof(bdPyramid));
+
+	bdPyramid.Usage = D3D11_USAGE_DEFAULT;
+	bdPyramid.ByteWidth = sizeof(indicesPyramid);
+	bdPyramid.BindFlags = D3D11_BIND_INDEX_BUFFER;
+	bdPyramid.CPUAccessFlags = 0;
+
+	D3D11_SUBRESOURCE_DATA InitDataP;
+	ZeroMemory(&InitDataP, sizeof(InitDataP));
+	InitDataP.pSysMem = indicesPyramid;
+	hrPyramid = appGFX->GetDevice()->CreateBuffer(&bdPyramid, &InitDataP, &_pIndexBufferPyramid);
+
+	if (FAILED(hrPyramid))
+		return hrPyramid;
+
+	return S_OK;
+}
+
+void Application::Cleanup()
+{
+	//Cleanup memory
+	if (_pVertexBufferCube) _pVertexBufferCube->Release();
+	if (_pIndexBufferCube) _pIndexBufferCube->Release();
+	if (_pVertexBufferCube) _pVertexBufferPyramid->Release();
+	if (_pIndexBufferCube) _pIndexBufferPyramid->Release();
+	if (p_TextureRV) p_TextureRV->Release();
+	if (p_SpecularTexture) p_SpecularTexture->Release();
+
 }

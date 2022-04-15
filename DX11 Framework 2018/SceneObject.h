@@ -9,6 +9,8 @@
 #include "ApplicationGraphics.h"
 //#include "Application.h"
 
+#include "BreaksEngine.h"
+
 #include <vector>
 
 using namespace DirectX;
@@ -27,7 +29,7 @@ public:
 	void SetTransform(XMFLOAT4X4 transform);
 	void SetTransform(XMMATRIX transform);
 	void GenerateTexture(wchar_t* texturePath, ID3D11Device* device);
-	void LoadModelMesh(char* filepath, ID3D11Device* device);
+	void LoadModelMesh(char* filepath, ID3D11Device* device, BreaksEngine* audioEngine);
 	//void SetDevice(ID3D11Device* device);
 	XMMATRIX UpdateTransforms();
 
@@ -44,11 +46,13 @@ public:
 	HRESULT LoadTexture(wchar_t* path, ID3D11ShaderResourceView** texture, ID3D11Device* device);
 	ApplicationGraphics* appGFX;
 
+	MeshData* mMeshData;
+
 private:
 	//ID3D11Device* _pd3dDevice;
 
 protected:
-	MeshData mMeshData;
+	
 
 	XMFLOAT4X4 mTransform;
 	XMFLOAT3 mPosition;

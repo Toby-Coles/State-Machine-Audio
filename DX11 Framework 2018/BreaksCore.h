@@ -7,8 +7,9 @@
 #include "fmod.h"
 #include <fmod.hpp>
 #include <bitset>
+#include <memory>
 
-class BreaksChannel;
+struct BreaksChannel;
 class BreaksEngine;
 
 // ========================== Breaks Core ========================== //

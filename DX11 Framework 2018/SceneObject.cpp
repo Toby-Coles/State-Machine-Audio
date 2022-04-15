@@ -49,10 +49,10 @@ void SceneObject::GenerateTexture(wchar_t* texturePath, ID3D11Device* device)
 	mTextures.push_back(texture);
 }
 
-void SceneObject::LoadModelMesh(char* filepath, ID3D11Device* device)
+void SceneObject::LoadModelMesh(char* filepath, ID3D11Device* device, BreaksEngine* audioEngine)
 {
 	//mMeshadata = incomingdata
-	mMeshData = OBJLoader::Load(filepath, device, false);
+	mMeshData = OBJLoader::Load(filepath, device, audioEngine, false);
 
 }
 
@@ -122,8 +122,8 @@ XMFLOAT3 SceneObject::GetScale()
 void SceneObject::Draw()
 {
 	
-	appGFX->SetIndexBuffer(mMeshData.IndexBuffer);
-	appGFX->SetVertexBuffer(mMeshData.VertexBuffer);
+	appGFX->SetIndexBuffer(mMeshData->IndexBuffer);
+	appGFX->SetVertexBuffer(mMeshData->VertexBuffer);
 
 	for (int i = 0; i < mTextures.size(); i++)
 	{
@@ -135,7 +135,7 @@ void SceneObject::Draw()
 	//appGFX->InitShadersAndInputLayout();
 	
 	appGFX->UpdateConstantBufferVariables(mTransform);
-	appGFX->Draw(mMeshData.IndexCount);
+	appGFX->Draw(mMeshData->IndexCount);
 }
 void SceneObject::Draw(ID3D11Buffer* vertexBuffer, ID3D11Buffer* indexBuffer,UINT indexCount){
 	appGFX->SetIndexBuffer(indexBuffer);

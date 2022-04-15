@@ -18,7 +18,7 @@ BreaksCore::BreaksCore() : earPos{ 0.0f, 0.0f, 0.0f }, nextSoundID(0), nextBreak
 BreaksCore::~BreaksCore()
 {
 	//Release all sounds from the engine
-	for (auto allSounds : sounds) {
+	for (auto& allSounds : sounds) {
 		allSounds.second->release();
 	}
 	sounds.clear();
@@ -41,12 +41,12 @@ void BreaksCore::SetEarPos(Vector3& pos, bool isRelative, Vector3 forward, Vecto
 		listenerVel = { 0.0f, 0.0f, 0.0f };
 	}
 	earPos = { listenerPos.x, listenerPos.y, listenerPos.z };
-	FMOD_VECTOR fvecForward;
+	FMOD_VECTOR fvecForward{};
 	fvecForward.x = forward.x;
 	fvecForward.y = forward.y;
 	fvecForward.z = forward.z;
 
-	FMOD_VECTOR fvecUp;
+	FMOD_VECTOR fvecUp{};
 	fvecUp.x = up.x;
 	fvecUp.y = up.y;
 	fvecUp.z = up.z;
