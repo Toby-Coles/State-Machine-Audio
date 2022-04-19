@@ -85,6 +85,14 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	_speaker2->GenerateTexture(L"Textures/white.dds", appGFX->GetDevice());
 	_worldSceneObjects.push_back(_speaker2);
 
+	_piano = new SceneObject(appGFX);
+	_piano->LoadModelMesh("Models/grandpiano.obj", appGFX->GetDevice(), audioEngine);
+	_piano->SetPosition(XMFLOAT3(-25.0f, -4.4f, 30.0f));
+	_piano->SetScale(XMFLOAT3(0.25f, 0.25f, 0.25f));
+	
+	_speaker2->GenerateTexture(L"Textures/planeSurface.dds", appGFX->GetDevice());
+	_worldSceneObjects.push_back(_piano);
+
 	//Initialise the timer in the program
 	_timer = new TimeKeep();
 	_timer->Reset();
@@ -122,6 +130,8 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	soundPos.x = 0.0f; soundPos.y = 0.0f; soundPos.z = 0.0f;
 
 	SoundData speakerMusic;
+	speakerMusic.minDistance = 10;
+	speakerMusic.maxDistance = 15;
 	speakerMusic.fileName = ("Resources/Brasil.wav");
 	
 	brasilPos.x = (25.0f); brasilPos.y = (-5.1f); brasilPos.z = (-25.0f);
@@ -131,6 +141,17 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	
 	audioEngine->RegisterSound(backgroundMusic, true); //ID 1
 	
+	SoundData pianoTrack1;
+	pianoTrack1.minDistance = 1;
+	pianoTrack1.maxDistance = 5;
+	pianoTrack1.volume = 3;
+	pianoTrack1.isLoop = true;
+	
+	pianoTrack1.fileName = ("Resources/Dene.mp3");
+	audioEngine->RegisterSound(pianoTrack1, true);
+	//-25.0f, -4.4f, 30.0f
+	Vector3 pianoPos = { -25.0f, -3.4f, 30.0f };
+	audioEngine->PlayAudio(2, pianoPos, pianoTrack1.volume);
 
 	for (int i = 0; i < _worldSceneObjects.size(); i++) {
 		FMOD::Geometry* g = _worldSceneObjects[i]->mMeshData->fmodGeometry;
@@ -264,6 +285,8 @@ void Application::ShowSceneUI()
 	}
 	/*ImGui::SliderFloat("Sound System Volume", &brasilVolume, 0.0f, 20.0f);
 	audioEngine->SetBreaksChannelVolume(_brasilChannel, brasilVolume);*/
+
+	//Piano
 
 
 	ImGui::End();

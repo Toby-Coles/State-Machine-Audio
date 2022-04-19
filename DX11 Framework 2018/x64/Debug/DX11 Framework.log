@@ -1,10 +1,8 @@
-﻿  ApplicationGraphics.cpp
-D:\FYP\FYP-Artifact\DX11 Framework 2018\ApplicationGraphics.cpp(128,9): warning C4551: function call missing argument list
-D:\FYP\FYP-Artifact\DX11 Framework 2018\ApplicationGraphics.cpp(133,9): warning C4551: function call missing argument list
-D:\FYP\FYP-Artifact\DX11 Framework 2018\ApplicationGraphics.cpp(202): warning C4238: nonstandard extension used: class rvalue used as lvalue
-D:\FYP\FYP-Artifact\DX11 Framework 2018\ApplicationGraphics.cpp(203): warning C4238: nonstandard extension used: class rvalue used as lvalue
-D:\FYP\FYP-Artifact\DX11 Framework 2018\ApplicationGraphics.cpp(202,62): warning C4238: nonstandard extension used: class rvalue used as lvalue
-D:\FYP\FYP-Artifact\DX11 Framework 2018\ApplicationGraphics.cpp(203,74): warning C4238: nonstandard extension used: class rvalue used as lvalue
-D:\FYP\FYP-Artifact\DX11 Framework 2018\ApplicationGraphics.cpp(292): warning C4715: 'ApplicationGraphics::UpdateWireFrame': not all control paths return a value
+﻿  Application.cpp
+D:\FYP\FYP-Artifact\DX11 Framework 2018\CubeObject.h(8,34): warning C4100: 'graphics': unreferenced formal parameter
+D:\FYP\FYP-Artifact\DX11 Framework 2018\Application.cpp(115,15): warning C4189: 'result': local variable is initialized but not referenced
+D:\FYP\FYP-Artifact\DX11 Framework 2018\Application.cpp(296,14): warning C4129: '=': unrecognized character escape sequence
+D:\FYP\FYP-Artifact\DX11 Framework 2018\Application.cpp(305,14): warning C4129: '=': unrecognized character escape sequence
+D:\FYP\FYP-Artifact\DX11 Framework 2018\Application.cpp(311,14): warning C4129: '=': unrecognized character escape sequence
 x64\Debug\BreaksCore.obj : warning LNK4042: object specified more than once; extras ignored
   DX11 Framework.vcxproj -> D:\FYP\FYP-Artifact\DX11 Framework 2018\x64\Debug\DX11 Framework.exe

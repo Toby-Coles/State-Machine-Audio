@@ -69,7 +69,7 @@ void BreaksCore::Update(float deltaTime)
 		FMOD_VECTOR channelPos = { iterator->second->position.x, iterator->second->position.y, iterator->second->position.y };
 
 		system->getGeometryOcclusion(&earPosVector, &channelPos , &directOcclusion, &reverbOcclusion);
-		iterator->second->channel->set3DOcclusion(directOcclusion, reverbOcclusion);
+		//iterator->second->channel->set3DOcclusion(directOcclusion, reverbOcclusion);
 
 		//If the channels state is set to STOPPED, push the channel to stopped channels
 		if (iterator->second->state == BreaksChannel::State::STOPPED)

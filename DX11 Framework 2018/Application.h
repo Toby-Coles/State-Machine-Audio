@@ -58,6 +58,8 @@ private:
 	SceneObject* _warehouse;
 	SceneObject* _speaker;
 	SceneObject* _speaker2;
+	SceneObject* _piano;
+
 	Vector3 brasilPos;
 
 	FMOD::Geometry *wallGeometry = 0;

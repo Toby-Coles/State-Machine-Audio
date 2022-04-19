@@ -80,7 +80,7 @@ HRESULT ApplicationGraphics::Initialize(HINSTANCE hInstance, int nCmdShow)
 
 	_pointLight.Range = 6000.0f;
 
-
+	
 
 	//SpotLight
 	_spotLight.Ambient = XMFLOAT4(0.2f, 0.2f, 0.2f, 1.0f);
