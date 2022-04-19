@@ -266,7 +266,7 @@ MeshData* OBJLoader::Load(char* filename, ID3D11Device* _pd3dDevice, BreaksEngin
 
 			audioEngine->CreateFmodGeometry(meshData->fmodGeometry, 2000, 8000);
 
-			meshData->fmodGeometry->addPolygon(1.0f, 1.0f, false, meshData->fmodVerts.size(), finalVert, 0);
+			meshData->fmodGeometry->addPolygon(1.0f, 1.0f, true, meshData->fmodVerts.size(), finalVert, nullptr);
 
 
 			//This data has now been sent over to the GPU so we can delete this CPU-side stuff
@@ -333,10 +333,10 @@ MeshData* OBJLoader::Load(char* filename, ID3D11Device* _pd3dDevice, BreaksEngin
 		{
 			finalVert[i] = { finalVerts[i].Pos.x,  finalVerts[i].Pos.y, finalVerts[i].Pos.z };
 		}
-
+		
 		audioEngine->CreateFmodGeometry(meshData->fmodGeometry, 2000, 8000);
 
-		meshData->fmodGeometry->addPolygon(1.0f, 1.0f, false, numVertices, finalVert, 0);
+		meshData->fmodGeometry->addPolygon(1.0f, 1.0f, true, numVertices, finalVert, nullptr);
 
 		meshData->IndexCount = numIndices;
 		meshData->IndexBuffer = indexBuffer;

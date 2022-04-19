@@ -52,14 +52,16 @@ struct BreaksChannel {
 	//Virtualisation Settings
 	VirtualSetting virtualSetting;
 
+
+
 	bool virtualFlag = false;
 	float virtualDistance;
 	float virtualTimer = 0.0f;
-	float virtualCheckPlayPeriod;
-	float virtualCheckVirtualPeriod;
-	float virtualFadeInTime;
-	float virtualFadeOutTime;
-	float stopFadeOutTime;
+	float virtualCheckPlayPeriod = 0.5f;
+	float virtualCheckVirtualPeriod = 1.0f;
+	float virtualFadeInTime = 1.0f;
+	float virtualFadeOutTime = 1.0f;
+	float stopFadeOutTime = 4.0f;
 
 	State state = State::INIT;
 	float volume = 1.0f;
@@ -67,7 +69,7 @@ struct BreaksChannel {
 	Vector3 position;
 
 	//Virtual Flags
-	bool isVirtFlagEffective;
+	bool isVirtFlagEffective = true;
 	bool virtFlag = false;
 	std::bitset<8> updateFlags;
 

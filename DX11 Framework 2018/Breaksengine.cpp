@@ -62,7 +62,7 @@ int BreaksEngine::PlayAudio(int soundID, Vector3 pos, float volume)
 		return breaksChannelID;
 	}
 	core->channelMap[breaksChannelID] = std::make_unique<BreaksChannel>(*core, soundID, core->soundDataMap[soundID], VirtualSetting::MUTE, pos, volume);
-	
+	//core->channelMap[breaksChannelID]->channel->set3DOcclusion(1.0f, 1.0f);
 	
 	return breaksChannelID;
 }
@@ -115,6 +115,29 @@ void BreaksEngine::SetSoundDirection(int channelID, Vector3 direction, Vector3 c
 	}
 }
 
+void BreaksEngine::ChangeVirtualSetting(int channelID, int setting)
+{
+	auto exists = core->channelMap.find(channelID);
+	if (exists != core->channelMap.end()) {
+		if (setting == 0) {
+			exists->second->virtualSetting = VirtualSetting::RESTART;
+		}
+		else if (setting == 1) {
+			exists->second->virtualSetting = VirtualSetting::PAUSE;
+		}
+		else if (setting == 2) {
+			exists->second->virtualSetting = VirtualSetting::MUTE;
+		}
+		else {
+			//If an incorrect number was provided, default to MUTE
+			exists->second->virtualSetting = VirtualSetting::MUTE;
+		}
+		
+	}
+}
+
+
+
 void BreaksEngine::SetBreaksChannelPosition(int channelID, Vector3 pos, bool isRelative)
 {
 	auto exists = core->channelMap.find(channelID);
@@ -153,7 +176,7 @@ void BreaksEngine::DeVirtualiseBreaksChannel(int channelID)
 {
 	auto exists = core->channelMap.find(channelID);
 	if (exists != core->channelMap.end()); {
-		exists->second->virtualFlag = true;
+		exists->second->virtualFlag = false;
 	}
 
 	
@@ -171,5 +194,8 @@ FMOD::Reverb3D* BreaksEngine::CreateReverb(Vector3 position, FMOD_REVERB_PROPERT
 
 void BreaksEngine::CreateFmodGeometry(FMOD::Geometry* geometry, int maxPoligons, int maxVertices)
 {
-	core->system->createGeometry(maxPoligons, maxVertices, &geometry);
+	FMOD_RESULT result;
+
+	result = core->system->createGeometry(maxPoligons, maxVertices, &geometry);
+	
 }

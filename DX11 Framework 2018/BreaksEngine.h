@@ -64,6 +64,7 @@ public:
 	bool CheckLoaded(int soundID);
 	void SetBreaksChannelVolume(int channelID, float volume);
 	void SetSoundDirection(int channelID, Vector3 direction, Vector3 coneSize);
+	void ChangeVirtualSetting(int channelID, int setting);
 	void SetBreaksChannelPosition(int channelID, Vector3 pos, bool isRelative);
 	void StopBreaksChannel(int channelID);
 	void VirtualiseBreaksChannel(int channelID);

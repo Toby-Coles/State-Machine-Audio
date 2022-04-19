@@ -14,7 +14,6 @@ Application::Application()
 	appGFX = nullptr;
 	_skyMap = nullptr;
 	_cube = nullptr;
-	_earth = nullptr;
 	_camera1 = nullptr;
 
 }
@@ -42,8 +41,6 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	_camera1->LookAt(_camera1->GetCameraPosition(), XMFLOAT3(0.0f, 0.0f, 0.0f), _camera1->GetCameraUp());
 	_camera1->SetLens(90.0f, 1920 /1080, 0.01f, 1000.0f);
 
-	
-
 	//Create the object for the crate cube in the scene 
 	_cube = new SceneObject(appGFX);
 	_cube->LoadModelMesh("Models/cube.obj", appGFX->GetDevice(), audioEngine);
@@ -53,44 +50,6 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	_cube->GenerateTexture(L"Textures/Crate_COLOR.dds", appGFX->GetDevice());
 	_cube->GenerateTexture(L"Textures/Crate_SPEC.dds", appGFX->GetDevice());
 	_worldSceneObjects.push_back(_cube);
-
-	////Create the earth object in the scene
-	//_earth = new SceneObject(appGFX);
-	//_earth->LoadModelMesh("Models/sphere2.obj", appGFX->GetDevice());
-	//_earth->SetPosition(XMFLOAT3(0.0f, 0.0f, 0.0f));
-	//_earth->SetScale(XMFLOAT3(10.0f, 10.0f, 10.0f));
-	//_earth->GenerateTexture(L"Textures/earth_color.dds", appGFX->GetDevice());
-	//_earth->GenerateTexture(L"Textures/earth_spec.dds", appGFX->GetDevice());
-	//_earth->GenerateTexture(L"Textures/earth_night.dds", appGFX->GetDevice());
-	//_worldSceneObjects.push_back(_earth);
-
-	_ship = new SceneObject(appGFX);
-	_ship->LoadModelMesh("Models/userModel.obj", appGFX->GetDevice(), audioEngine);
-	_ship->SetPosition(XMFLOAT3(0.0f, 0.0f, - 25.0f));
-	_ship->SetScale(XMFLOAT3(0.3f, 0.3f, 0.3f));
-	_ship->GenerateTexture(L"Textures/shipTex.dss", appGFX->GetDevice());
-	_worldSceneObjects.push_back(_ship);
-
-	_shipPlayer = new SceneObject(appGFX);
-	_shipPlayer->LoadModelMesh("Models/userModelRotated.obj", appGFX->GetDevice(),audioEngine);
-	_shipPlayer->SetPosition(XMFLOAT3(0.0f, 0.0f, 40.0f));
-	_shipPlayer->SetScale(XMFLOAT3(0.3f, 0.3f, 0.3f));
-	_shipPlayer->GenerateTexture(L"Textures/shipTex.dss", appGFX->GetDevice());
-	_worldSceneObjects.push_back(_shipPlayer);
-
-	_camera2 = new Camera();
-	_camera2->SetCameraPosition(XMFLOAT3(0.0f, 0.0f, 15.0f));
-	_camera2->LookAt(_camera2->GetCameraPosition(), XMFLOAT3(0.0f, 0.0f, 1.0f), _camera2->GetCameraUp());
-	_camera2->SetLens(90.0f, 1920 / 1080, 0.01f, 1000.0f);
-	_camera2->UpdateViewMatrix();
-
-	_camera3 = new Camera();
-	_camera3->SetCameraPosition(XMFLOAT3(20.0f, 22.0f, 23.0f));
-	_camera3->SetLens(90.0f, 1920 / 1080, 0.01f, 1000.0f);
-	_camera3->LookAt(XMFLOAT3(20.0f, 22.0f, 23.0f), XMFLOAT3(0.0f, -0.72f, -0.51f), XMFLOAT3(0.51f, 0.68f, 0.5f));
-	//camera3->SetCameraUp(XMFLOAT3(0.51f, 0.68f, -0.5f));
-	_camera3->UpdateViewMatrix();
-	//camera right = XMFLOAT3(-0.7, -1, 0.7);
 
 	//Initialise the view matrix for the camera
 	_camera1->UpdateViewMatrix();
@@ -104,13 +63,6 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	_skyMap->SetScale(XMFLOAT3(100.0f, 100.0f, 100.0f));
 	_skyMap->SetRotation(XMFLOAT3(0.0f, 0.0f, 0.0f));
 	_skyMap->GenerateTexture(L"Textures/Skymap.dds", appGFX->GetDevice());
-
-	//Creates the ground plane
-	_plane = new GroundPlane(appGFX);
-	_plane->GeneratePlane(30.0f, 30.0f, 8, 8);
-	_plane->SetPosition (XMFLOAT3(0.0f, -10.0f, 0.0f));
-	_plane->GenerateTexture(L"Textures/planeSurface.dds", appGFX->GetDevice());
-	_showGridPlane = true;
 
 	_warehouse = new SceneObject(appGFX);
 	_warehouse->LoadModelMesh("Models/testscene.obj", appGFX->GetDevice(), audioEngine);
@@ -141,35 +93,28 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	_moveSpeed = 3.0f;
 
 
-	
-	
-
 	hallReverbZone = audioEngine->CreateReverb(Vector3{ -70.0f, -5.1f, -30.0f }, FMOD_PRESET_ALLEY);
 	_currentAudioID = 1;
 	
 
-	//audioEngine->CreateFmodGeometry(wallGeometry, 200, 1200);
-	/*FMOD_VECTOR vertices[3];
-	vertices[0] = { 0.0f, 0.0f, 0.0f };
-	vertices[1] = { 0.0f, 1.0f, 0.0f };
-	vertices[2] = { 0.0f, 0.0f, 1.0f };*/
+	audioEngine->CreateFmodGeometry(wallGeometry, 200, 1200);
 
-	//FMOD_VECTOR rectangle[4] = {{ -100, -100, 0}, { -100, 100, 0}, { 100,100, 0}, { 10, -100, 0} };
+	FMOD_VECTOR rectangle[4] = {{ -100, -100, 0}, { -100, 100, 0}, { 100,100, 0}, { 10, -100, 0} };
 	//FMOD_VECTOR* verts = new FMOD_VECTOR[_warehouse->mMeshData->fmodVerts.size()];
 	//verts = _warehouse->mMeshData.fmodVerts;
-	//int index = 0;
+	int index = 0;
 	
-	//FMOD_RESULT  result = wallGeometry->addPolygon(1.0f, 1.0f, true, 4, rectangle, &index);
+	FMOD_RESULT  result = wallGeometry->addPolygon(1.0f, 1.0f, true, 4, rectangle, &index);
 		
 	
-	//FMOD_VECTOR worldPos = { 25.0f, -5.0f, -10.0f };
-	//wallGeometry->setPosition(&worldPos);
+	FMOD_VECTOR worldPos = { 25.0f, -5.0f, -10.0f };
+	wallGeometry->setPosition(&worldPos);
 
 	FMOD_VECTOR occlusionRotate = { 0, 0, -1 }; // rotation object geometry
 	FMOD_VECTOR occlusionUp = { 0, 1, 0 };
 
-	////wallGeometry->setRotation(&occlusionRotate, &occlusionUp);
-	//wallGeometry->setActive(true);
+	wallGeometry->setRotation(&occlusionRotate, &occlusionUp);
+	wallGeometry->setActive(true);
 
 	SoundData backgroundMusic;
 	backgroundMusic.fileName = ("Resources/TestSong.wav");
@@ -181,10 +126,10 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	
 	brasilPos.x = (25.0f); brasilPos.y = (-5.1f); brasilPos.z = (-25.0f);
 	audioEngine->RegisterSound(speakerMusic, true);
-	audioEngine->PlayAudio(0, brasilPos, 14);
+	audioEngine->PlayAudio(0, brasilPos, 10);
 
 	
-	audioEngine->RegisterSound(backgroundMusic, true); //ID 0
+	audioEngine->RegisterSound(backgroundMusic, true); //ID 1
 	
 
 	for (int i = 0; i < _worldSceneObjects.size(); i++) {
@@ -195,14 +140,12 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 
 		g->setPosition(&v);
 		g->setScale(&s);
-		g->setRotation(&r, new FMOD_VECTOR{ 0.0f,1.0f,0.0f });
+		g->setRotation(&r, new FMOD_VECTOR{ 0.0f,0.0f,0.0f });
 		g->setActive(true);
 	}
 
 	//Set rotation values
-	_rotation = 0.0f;
-	_rotationSpeed = 0.5f;
-	_earthRotationSpeed = 0.1f;
+
 	appGFX->SetCamera(_camera1);
 	return S_OK;
 }
@@ -220,10 +163,6 @@ void Application::Update()
 
 	audioEngine->SetEarPos(_camera1->GetCameraVectorPos(), false, _camera1->GetCameraForwardVec(), _camera1->GetCameraUpVector());
 
-	//Updates the rotation values so they are constant
-	//_rotation += (_rotationSpeed * deltaTime);
-	//_earthRotation += (_earthRotationSpeed * deltaTime);
-
 	audioEngine->Update(deltaTime);
 	FMOD_VECTOR listenerPos = { _camera1->GetCameraVectorPos().x,_camera1->GetCameraVectorPos().y, _camera1->GetCameraVectorPos().z };
 	FMOD_VECTOR brasilVector = { brasilPos.x, brasilPos.y, brasilPos.z };
@@ -232,79 +171,30 @@ void Application::Update()
 	//Sets the EyePosw for rendering to that of the active camera
 	appGFX->SetEyePosW(appGFX->GetCurrentCamera()->GetCameraPosition());
 
-	//_cube->SetRotation(XMFLOAT3(_rotation, 0.3f, 0.3f));
-
-	//_earth->SetRotation (XMFLOAT3(0.0f, _earthRotation, 0.0f ));
-
 	//Update Scene Objects
 	for each (SceneObject* object in _worldSceneObjects)
 	{
 		object->Update();
 	}
-	
-
-	//Set camera 2/'s position to the ship object with a reletive offset
-	_camera2->SetPosition(
-		_shipPlayer->GetPosition().x + _offset.x,
-		_shipPlayer->GetPosition().y + _offset.y,
-		_shipPlayer->GetPosition().z + _offset.z );
-
-	//Rotates the ship thats flying around earth
-	_ship->SetRotation(XMFLOAT3(0.0f, _rotation, 0.0f));
 
 	//Constantly sets the skymaps position reletive to the active camera to give the illusion of it never moving
 	_skyMap->SetPosition(appGFX->GetCurrentCamera()->GetCameraPosition());
 	_skyMap->Update();
 
-	_plane->Update();
+
 
 	_isWireFrame = appGFX->UpdateWireFrame();
 
 	//Updates all camera control inputs
 	UpdateCameraControlls(deltaTime);
-
-	//Updates ship control inputs
-	UpdateShipControlls(deltaTime);
-	
+	UpdateSoundtackPosition();
 }
 
-void Application::UpdateShipControlls(float deltaTime) {
-	XMFLOAT3 shipPosition = _shipPlayer->GetPosition();
-	XMFLOAT3 shipRotation = _shipPlayer->GetRotation();
-
-	if (GetAsyncKeyState('I'))
-	{
-		shipPosition.z += -_moveSpeed * deltaTime;
-	}
-	else if (GetAsyncKeyState('K'))
-	{
-		shipPosition.z += _moveSpeed * deltaTime;
-	}
-	if (GetAsyncKeyState('J'))
-	{
-		shipPosition.x += _moveSpeed * deltaTime;
-	}
-	else if (GetAsyncKeyState('L'))
-	{
-		shipPosition.x += -_moveSpeed * deltaTime;
-	}
-	if (GetAsyncKeyState('O'))
-	{
-		shipRotation.y += _moveSpeed * deltaTime;
-	}
-
-	//Position update
-	if (shipPosition.x != _shipPlayer->GetPosition().x
-		|| shipPosition.z != _shipPlayer->GetPosition().z)
-		_shipPlayer->SetPosition(shipPosition);
-
-	//Rotation Update
-	if (shipRotation.x != _shipPlayer->GetRotation().x
-		|| shipRotation.y != _shipPlayer->GetRotation().y ||
-		shipRotation.z != _shipPlayer->GetRotation().z)
-		_shipPlayer->SetRotation(shipRotation);
-
+void Application::UpdateSoundtackPosition() {
+	audioEngine->SetBreaksChannelPosition(_jukeboxChannelID, _camera1->GetCameraVectorPos(), false);
 }
+
+
 void Application::UpdateCameraControlls(float deltaTime)
 {
 	//Camera controlls for W, A, S and D
@@ -326,39 +216,21 @@ void Application::UpdateCameraControlls(float deltaTime)
 	else if (GetAsyncKeyState('F')) _camera1->Pitch(_camMoveSpeed * deltaTime);
 
 	// ================= Camera Selection ================= //
-
 	if (GetAsyncKeyState('1')) appGFX->SetCamera(_camera1);
 	appGFX->SetEyePosW(_camera1->GetCameraPosition());
-
-	if (GetAsyncKeyState('2')) appGFX->SetCamera(_camera2);
-	appGFX->SetEyePosW(_camera2->GetCameraPosition());
-
-	if (GetAsyncKeyState('3')) appGFX->SetCamera(_camera3);
-	appGFX->SetEyePosW(_camera3->GetCameraPosition());
-
-
 	_camera1->UpdateViewMatrix();
-	_camera2->UpdateViewMatrix();
-	_camera3->UpdateViewMatrix();
 }
 
 
 
 void Application::ShowSceneUI()
 {
-	// The definition of the scene UI
-	//XMFLOAT3 earthScale = XMFLOAT3(_earth->GetScale());
-	//XMFLOAT3 earthPosition = XMFLOAT3(_earth->GetPosition());
-	XMFLOAT3 shipOrbiterScale = XMFLOAT3(_ship->GetScale());
-	XMFLOAT3 shipPosition = XMFLOAT3(_ship->GetPosition());
-
 	
-
 	Vector3 soundPos;
 	soundPos.x = 0.0f; soundPos.y = 0.0f; soundPos.z = 0.0f;
 
 	ImGui::Begin("Scene Object Control Panel");
-	ImGui::Text("Jukebox Controls");
+	ImGui::Text("Player Soundtrack Controls");
 	if (ImGui::Button("Play")) 
 	{
 		_jukeboxChannelID = audioEngine->PlayAudio(_currentAudioID, soundPos, 0.5);
@@ -367,47 +239,36 @@ void Application::ShowSceneUI()
 		audioEngine->StopBreaksChannel(_jukeboxChannelID);
 	}
 
-	ImGui::SliderFloat("JukeboxVolume", &jukeBoxVolume, 0.0f, 1.0f);
+	ImGui::SliderFloat("SoundtrackVolume", &jukeBoxVolume, 0.0f, 1.0f);
 	audioEngine->SetBreaksChannelVolume(_jukeboxChannelID, jukeBoxVolume);
 
-	//ImGui::SliderFloat("Earth Scale X", &earthScale.x, 0.0f, 50.0f);
-	/*ImGui::SliderFloat("Earth Scale Y", &earthScale.y, 0.0f, 50.0f);
-	ImGui::SliderFloat("Earth Scale Z", &earthScale.z, 0.0f, 50.0f);
-	ImGui::SliderFloat("Earth Rotation", &_earthRotationSpeed, 0.0f, 2.0f);
-	ImGui::SliderFloat("Position X", &earthPosition.x, -50.0f, 50.0f);
-	ImGui::SliderFloat("Position Y", &earthPosition.y, -50.0f, 50.0f);
-	ImGui::SliderFloat("Position Z", &earthPosition.z, -50.0f, 50.0f);*/
-	ImGui::Text("SpaceShip(Orbiter)");
-	ImGui::SliderFloat("Ship Scale X", &shipOrbiterScale.x, 0.0f, 50.0f);
-	ImGui::SliderFloat("Ship Scale Y", &shipOrbiterScale.y, 0.0f, 50.0f);
-	ImGui::SliderFloat("Ship Scale Z", &shipOrbiterScale.z, 0.0f, 50.0f);
-	ImGui::SliderFloat("Ship Rotation", &_rotationSpeed, 0.0f, 2.0f);
-	ImGui::SliderFloat("Ship Position X", &shipPosition.x, -50.0f, 50.0f);
-	ImGui::SliderFloat("Ship Position Y", &shipPosition.y, -50.0f, 50.0f);
-	ImGui::SliderFloat("ship Position Z", &shipPosition.z, -50.0f, 50.0f);
+	/////////////////////////////////////////////
 
-	ImGui::Text("Grid Plane");
-	if (ImGui::Button("Show Grid Plane"))
+	ImGui::Text("Rig Speaker Controls - Virtualisation ");
+	if (ImGui::Button("Virtualise"))
 	{
-		if (_showGridPlane == false)
-		{
-			_showGridPlane = true;
-		}
-		else
-		{
-			_showGridPlane = false;
-		}
+		 audioEngine->VirtualiseBreaksChannel(0);
 	}
+	if (ImGui::Button("Devirtualise")) {
+		audioEngine->DeVirtualiseBreaksChannel(0);
+	}
+	ImGui::Text("Change Virtualisation Setting");
+	if (ImGui::Button("RESTART")) {
+		audioEngine->ChangeVirtualSetting(0, 0);
+	}
+	if (ImGui::Button("PAUSE")) {
+		audioEngine->ChangeVirtualSetting(0, 1);
+	}
+	if (ImGui::Button("MUTE")) {
+		audioEngine->ChangeVirtualSetting(0, 2);
+	}
+	/*ImGui::SliderFloat("Sound System Volume", &brasilVolume, 0.0f, 20.0f);
+	audioEngine->SetBreaksChannelVolume(_brasilChannel, brasilVolume);*/
 
-	XMFLOAT3 planeScale = _plane->GetScale();
 
-
-	ImGui::SliderFloat("Grid Plane Scale X", &planeScale.x, 0.0f, 50.0f);
-	
-	ImGui::SliderFloat("Grid Plane Scale Z", &planeScale.z, 0.0f, 50.0f);
 	ImGui::End();
 
-	_plane->SetScale(planeScale);
+
 	ImGui::Begin("Controls");
 	ImGui::Text("===/ Camera \===");
 	ImGui::Text("W: Fly Fowards");
@@ -431,12 +292,6 @@ void Application::ShowSceneUI()
 	ImGui::Text("L: Right");
 	
 	ImGui::End();
-
-	////Sets the data that may have been altered by the UI
-	//_earth->SetScale(earthScale);
-	//_earth->SetPosition(earthPosition);
-	//_ship->SetScale(shipOrbiterScale);
-	//_ship->SetPosition(shipPosition);
 }
 
 void Application::Draw()
@@ -458,11 +313,6 @@ void Application::Draw()
 		object->Draw();
 	}
 
-	if (_showGridPlane)
-	{
-		_plane->Draw(_plane->GetPlaneVb(), _plane->GetPlaneIb(), _plane->GetPlaneIndexCount());
-
-	}
 
 	appGFX->RunLightingControls();
 
@@ -480,9 +330,6 @@ void Application::Draw()
 
 	appGFX->Present();
 
-
-
-	
 }
 
 HRESULT Application::InitVertexBuffer()

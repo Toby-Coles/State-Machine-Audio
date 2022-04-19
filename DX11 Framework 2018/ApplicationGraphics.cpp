@@ -88,7 +88,7 @@ HRESULT ApplicationGraphics::Initialize(HINSTANCE hInstance, int nCmdShow)
 	_spotLight.Specular = XMFLOAT4(0.6f, 0.6f, 0.6f, 1.0f);
 	_spotLight.Attenuation = XMFLOAT3(1.0f, 0.0f, 0.0f);
 	_spotLight.Spot = 96.0f;
-	_spotLight.Range = 20.0f;
+	_spotLight.Range = 50.0f;
 
 	//local Material values
 	_material.Ambient = XMFLOAT4(0.6f, 0.6f, 0.6f, 1.0f);

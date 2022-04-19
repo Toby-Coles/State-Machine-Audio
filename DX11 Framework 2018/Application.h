@@ -38,7 +38,7 @@ private:
 	ID3D11ShaderResourceView* p_SpecularTexture = nullptr;
 
 	//Update Controls
-	void UpdateShipControlls(float deltaTime);
+	//void UpdateShipControlls(float deltaTime);
 	void UpdateCameraControlls(float deltaTime);
 	
 	ApplicationGraphics* appGFX;
@@ -52,11 +52,9 @@ private:
 	std::vector<SceneObject*> _worldSceneObjects;
 
 	//Scene Objects
-	GroundPlane* _plane;
+
 	SceneObject* _cube;
-	SceneObject* _earth;
-	SceneObject* _ship;
-	SceneObject* _shipPlayer;
+
 	SceneObject* _warehouse;
 	SceneObject* _speaker;
 	SceneObject* _speaker2;
@@ -86,15 +84,14 @@ private:
 	//Scene Objects
 	std::vector<SceneObject> _applicationObjects;
 
-	float _rotationSpeed;
-	float _earthRotationSpeed;
-
-	float _earthRotation = 0.0f;
-	float _rotation = 0.0f;
 	XMFLOAT3 _offset = XMFLOAT3(0.0f, 3.0f, 5.0f);
 
 	float _moveSpeed;
 	BreaksEngine* audioEngine;
+
+	//Set Channels
+	int _brasilChannel = 0;
+	float brasilVolume = 10.0f;
 
 	int _currentAudioID;
 	int _jukeboxChannelID;
@@ -111,6 +108,7 @@ public:
 	
 
 	void Update();
+	void UpdateSoundtackPosition();
 	void Draw();
 };
 

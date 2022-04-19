@@ -9,10 +9,11 @@ BreaksCore::BreaksCore() : earPos{ 0.0f, 0.0f, 0.0f }, nextSoundID(0), nextBreak
 	system = nullptr;
 	FMOD::System_Create(&system);
 	FMOD::Debug_Initialize(FMOD_DEBUG_LEVEL_LOG);
-	system->init(128, FMOD_INIT_NORMAL, nullptr);
+	system->init(128, FMOD_INIT_CHANNEL_LOWPASS, nullptr);
 	FMOD_VECTOR listenerPos = { earPos.x, earPos.y, earPos.z };
 	FMOD_VECTOR listenerVel = { 0.0f, 0.0f, 0.0f };
 	system->set3DListenerAttributes(0, &listenerPos, &listenerVel, nullptr, nullptr);
+	system->setGeometrySettings(1000.0f);
 }
 
 BreaksCore::~BreaksCore()
@@ -58,12 +59,18 @@ void BreaksCore::SetEarPos(Vector3& pos, bool isRelative, Vector3 forward, Vecto
 void BreaksCore::Update(float deltaTime)
 {
 	
-
-
 	std::vector<BreaksChannelMap::iterator> stoppedChannels;
 	//Itterate through each channel and call the channel specific update function via the state machine
 	for (auto iterator = channelMap.begin(), end = channelMap.end(); iterator != end; iterator++) {
 		iterator->second->Update(deltaTime);
+		float directOcclusion = 0.0f; float reverbOcclusion = 0.0f;
+
+		FMOD_VECTOR earPosVector = { earPos.x, earPos.y, earPos.z };
+		FMOD_VECTOR channelPos = { iterator->second->position.x, iterator->second->position.y, iterator->second->position.y };
+
+		system->getGeometryOcclusion(&earPosVector, &channelPos , &directOcclusion, &reverbOcclusion);
+		iterator->second->channel->set3DOcclusion(directOcclusion, reverbOcclusion);
+
 		//If the channels state is set to STOPPED, push the channel to stopped channels
 		if (iterator->second->state == BreaksChannel::State::STOPPED)
 			stoppedChannels.push_back(iterator);

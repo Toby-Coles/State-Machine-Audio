@@ -4,3 +4,5 @@ G:\FYP\FYP-Artifact-e260ae62f8369588d8cad99508c8a7f16da36e1a\DX11 Framework 2018
 G:\FYP\FYP-Artifact-e260ae62f8369588d8cad99508c8a7f16da36e1a\DX11 Framework 2018\x64\Debug\DX11 Framework.pdb
 G:\FYP\FYP-Artifact-\DX11 Framework 2018\x64\Debug\DX11 Framework.exe
 G:\FYP\FYP-Artifact-\DX11 Framework 2018\x64\Debug\DX11 Framework.pdb
+D:\FYP\FYP-Artifact\DX11 Framework 2018\x64\Debug\DX11 Framework.exe
+D:\FYP\FYP-Artifact\DX11 Framework 2018\x64\Debug\DX11 Framework.pdb

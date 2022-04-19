@@ -21,7 +21,7 @@ struct MeshData
 	UINT IndexCount;
 
 	std::vector<XMFLOAT3> fmodVerts;
-	FMOD::Geometry* fmodGeometry = 0;
+	FMOD::Geometry* fmodGeometry;
 };
 
 //struct SimpleVertex

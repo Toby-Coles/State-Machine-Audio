@@ -102,11 +102,13 @@ void BreaksChannel::Update(float deltaTime)
 
 		// === PLAYING ---> VIRTUALISING === //
 		// ================================= //
-		if (virtualTimer < virtualCheckPlayPeriod) {
+		/*if (virtualFlag == true) {
+			state = State::VIRTUALISING;
+		}*/
 			if (VirtualCheck(false, deltaTime)) {
 				state = State::VIRTUALISING;
 			}
-		}
+		
 		// ================================= //
 
 		break;
@@ -199,13 +201,15 @@ void BreaksChannel::RunFadeIn(float deltaTime)
 void BreaksChannel::RunFadeOut(float deltaTime)
 {
 	float currentVolume;
+
 	channel->getVolume(&currentVolume);
 	float newVolume = currentVolume;
 	if (state == State::STOPPING) {
 		newVolume = currentVolume - deltaTime / stopFadeOutTime;
 	}
 	else if (state == State::VIRTUALISING) {
-		newVolume = currentVolume / deltaTime / virtualFadeOutTime;
+		newVolume = currentVolume - deltaTime / virtualFadeOutTime;
+		//newVolume = currentVolume - virtualFadeOutTime * deltaTime;
 	}
 	if (newVolume <= 0.0f) {
 		if (state == State::STOPPING) {
@@ -224,18 +228,21 @@ void BreaksChannel::RunFadeOut(float deltaTime)
 				channel->setVolume(0.0f);
 			}
 		}
-		channel->setVolume(newVolume);
+		
 
+	}
+	else {
+		channel->setVolume(newVolume);
 	}
 }
 
 bool BreaksChannel::VirtualCheck(bool allowOneShot, float deltaTime)
 {
-	if (virtualTimer < virtualCheckVirtualPeriod) {
+	/*if (virtualTimer < virtualCheckVirtualPeriod) {
 		return (state == State::VIRTUALISING || state == State::VIRTUAL);
-	}
-	else if (isVirtFlagEffective) {
-		return virtFlag;
+	}*/
+    if (isVirtFlagEffective) {
+		return virtualFlag;
 	}
 	else {
 		virtualTimer = 0.0f;
