@@ -110,6 +110,7 @@ public:
 	
 
 	void Update();
+	void UpdateOcclusion();
 	void UpdateSoundtackPosition();
 	void Draw();
 };

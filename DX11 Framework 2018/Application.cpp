@@ -144,7 +144,7 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	SoundData pianoTrack1;
 	pianoTrack1.minDistance = 1;
 	pianoTrack1.maxDistance = 5;
-	pianoTrack1.volume = 3;
+	pianoTrack1.volume = 4;
 	pianoTrack1.isLoop = true;
 	
 	pianoTrack1.fileName = ("Resources/Dene.mp3");
@@ -203,6 +203,7 @@ void Application::Update()
 	_skyMap->Update();
 
 
+	UpdateOcclusion();
 
 	_isWireFrame = appGFX->UpdateWireFrame();
 
@@ -211,6 +212,18 @@ void Application::Update()
 	UpdateSoundtackPosition();
 }
 
+//This function displays an example of implementing occlusion without FMODS Geometry engine
+void Application::UpdateOcclusion() {
+	float cameraZ = _camera1->GetCameraPosition().z;
+	float cameraX = _camera1->GetCameraPosition().x;
+	if (cameraZ > -10.0f) {
+		audioEngine->SetOcclusion(_brasilChannel, 0.8f, 0.7f);
+	}
+	else if (cameraX > -20.0f && cameraZ > -10.0f)
+		audioEngine->SetOcclusion(_brasilChannel, 0.4f, 0.4f);
+	else
+		audioEngine->SetOcclusion(_brasilChannel, 0.0f, 0.0f);
+}
 void Application::UpdateSoundtackPosition() {
 	audioEngine->SetBreaksChannelPosition(_jukeboxChannelID, _camera1->GetCameraVectorPos(), false);
 }
@@ -283,9 +296,21 @@ void Application::ShowSceneUI()
 	if (ImGui::Button("MUTE")) {
 		audioEngine->ChangeVirtualSetting(0, 2);
 	}
+	ImGui::Text("Reverb Controls");
+	if (ImGui::Button("Enable Reverb")) {
+		audioEngine->SetReverbActive(hallReverbZone, true);
+	}
+	if (ImGui::Button("Disable Reverb")) {
+		audioEngine->SetReverbActive(hallReverbZone, false);
+	}
+
 	/*ImGui::SliderFloat("Sound System Volume", &brasilVolume, 0.0f, 20.0f);
 	audioEngine->SetBreaksChannelVolume(_brasilChannel, brasilVolume);*/
-
+	float cameraX = _camera1->GetCameraPosition().x;
+	float cameraY = _camera1->GetCameraPosition().y;
+	float cameraZ = _camera1->GetCameraPosition().z;
+	ImGui::Text("Camera Pos = X: %f, Y: %f, Z: %f", cameraX, cameraY, cameraZ);
+	
 	//Piano
 
 

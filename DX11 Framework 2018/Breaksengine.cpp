@@ -31,6 +31,14 @@ void BreaksEngine::SetEarPos(Vector3 pos, bool isRelative, Vector3 forward, Vect
 void BreaksEngine::GetOcclusion(FMOD_VECTOR* listenerPos, FMOD_VECTOR* sourcePos, float directOcclusion, float reverbOcclusion) {
 	core->system->getGeometryOcclusion(listenerPos, sourcePos, &directOcclusion, &reverbOcclusion);
 }
+
+void BreaksEngine::SetOcclusion(int channelID, float directOcclusion, float reverbOcclusion) {
+	auto exists = core->channelMap.find(channelID);
+	if (exists != core->channelMap.end()) {
+		exists->second->channel->set3DOcclusion(directOcclusion, reverbOcclusion);
+	}
+}
+
 // ====== Shut down the Engine ====== //
 void BreaksEngine::ShutDown()
 {
@@ -189,7 +197,13 @@ FMOD::Reverb3D* BreaksEngine::CreateReverb(Vector3 position, FMOD_REVERB_PROPERT
 	core->system->createReverb3D(&reverb);
 	reverb->setProperties(&properties);
 	reverb->set3DAttributes(&pos, 30.0f, 150.0f);
+	
 	return reverb;
+}
+
+void BreaksEngine::SetReverbActive(FMOD::Reverb3D* reverb, bool state) {
+	
+	reverb->setActive(state);
 }
 
 void BreaksEngine::CreateFmodGeometry(FMOD::Geometry* geometry, int maxPoligons, int maxVertices)

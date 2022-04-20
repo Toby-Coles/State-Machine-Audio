@@ -45,6 +45,8 @@ public:
 	void SetEarPos(Vector3 pos, bool isRelative, Vector3 forward, Vector3 up);
 
 	void GetOcclusion(FMOD_VECTOR* listenerPos, FMOD_VECTOR* sourcePos, float directOcclusion, float reverbOcclusion);
+
+	void SetOcclusion(int channelID, float directOcclusion, float reverbOcclusion);
 	
 	void ShutDown();
 	//float RandomBetween();
@@ -70,6 +72,7 @@ public:
 	void VirtualiseBreaksChannel(int channelID);
 	void DeVirtualiseBreaksChannel(int channelID);
 	FMOD::Reverb3D* CreateReverb(Vector3 position, FMOD_REVERB_PROPERTIES properties);
+	void SetReverbActive(FMOD::Reverb3D* reverb, bool state);
 	void CreateFmodGeometry(FMOD::Geometry* geometry, int maxPoligons, int maxVertices);
 };
 
