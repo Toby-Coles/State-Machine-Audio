@@ -59,8 +59,8 @@ struct BreaksChannel {
 	float virtualTimer = 0.0f;
 	float virtualCheckPlayPeriod = 0.5f;
 	float virtualCheckVirtualPeriod = 1.0f;
-	float virtualFadeInTime = 1.0f;
-	float virtualFadeOutTime = 1.0f;
+	float virtualFadeInTime = 0.2f;
+	float virtualFadeOutTime = 0.2f;
 	float stopFadeOutTime = 4.0f;
 
 	State state = State::INIT;

@@ -44,26 +44,18 @@ public:
 	//void ErrorCheck(FMOD_RESULT result);
 	void SetEarPos(Vector3 pos, bool isRelative, Vector3 forward, Vector3 up);
 
-	void GetOcclusion(FMOD_VECTOR* listenerPos, FMOD_VECTOR* sourcePos, float directOcclusion, float reverbOcclusion);
-
-	void SetOcclusion(int channelID, float directOcclusion, float reverbOcclusion);
-	
 	void ShutDown();
-	//float RandomBetween();
 
-	// == Core Engine Functions == // 
-	//SoundStruct LoadSound(const char* name, const char* path);
-	//FMOD::Sound* CreateStream(const char* path);
 
-	//void PlaySound(int SoundStruct sound, float volume /*position*/);
-	int RegisterSound(SoundData& soundData, bool load);
-	int PlayAudio(int soundID, Vector3 pos, float volume);
-	
+	// Sound Data Management //
+	bool CheckLoaded(int soundID);
 	void LoadSound(int soundID);
 	void UnloadSound(int soundID);
-	//void StopSound(int soundID);
+	int RegisterSound(SoundData& soundData, bool load);
 
-	bool CheckLoaded(int soundID);
+	//Channel Manipulation //
+
+	int PlayAudio(int soundID, Vector3 pos, float volume);
 	void SetBreaksChannelVolume(int channelID, float volume);
 	void SetSoundDirection(int channelID, Vector3 direction, Vector3 coneSize);
 	void ChangeVirtualSetting(int channelID, int setting);
@@ -71,8 +63,12 @@ public:
 	void StopBreaksChannel(int channelID);
 	void VirtualiseBreaksChannel(int channelID);
 	void DeVirtualiseBreaksChannel(int channelID);
+
+	// Effects // 
 	FMOD::Reverb3D* CreateReverb(Vector3 position, FMOD_REVERB_PROPERTIES properties);
 	void SetReverbActive(FMOD::Reverb3D* reverb, bool state);
 	void CreateFmodGeometry(FMOD::Geometry* geometry, int maxPoligons, int maxVertices);
+	void GetOcclusion(FMOD_VECTOR* listenerPos, FMOD_VECTOR* sourcePos, float directOcclusion, float reverbOcclusion);
+	void SetOcclusion(int channelID, float directOcclusion, float reverbOcclusion);
 };
 
